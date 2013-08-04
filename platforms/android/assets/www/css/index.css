@@ -1,0 +1,551 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    background-color:#E4E4E4;
+    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        color-stop(0, #A7A7A7),
+        color-stop(0.51, #E4E4E4)
+    );
+    background-attachment:fixed;
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size:12px;
+    margin:0px;
+    padding:0px;
+    text-transform:capitalize;
+}
+
+/* Portrait layout (default) */
+.app {
+    background:url('img/logo.png') no-repeat center top; /* 170px x 200px */
+    position:absolute;             /* position in the center of the screen */
+    left:50%;
+    top:50%;
+    height:50px;                   /* text area height */
+    width:225px;                   /* text area width */
+    text-align:center;
+    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+                                   /* offset horizontal: half of text area width */
+}
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .app {
+        background-position:left center;
+        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
+        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
+                                      /* offset horizontal: half of image width and text area width */
+    }
+}
+
+/*html {
+overflow-y: scroll;
+overflow-x: hidden;
+}*/
+
+h1 {
+    font-size:24px;
+    font-weight:normal;
+    margin:0px;
+    overflow:visible;
+    padding:0px;
+    text-align:center;
+}
+
+.event {
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    color:#FFFFFF;
+    font-size:12px;
+    margin:0px 30px;
+    padding:2px 0px;
+}
+
+.event.listening {
+    background-color:#333333;
+    display:block;
+}
+
+.event.received {
+    background-color:#4B946A;
+    display:none;
+}
+
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+@-webkit-keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+.blink {
+    animation:fade 3000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
+}
+/*ul.nav {
+    margin: 120px 0 0 0;
+    list-style: none;
+    float: right;
+    background: #4fb69f;
+    border-radius: 25px;
+}
+ul.nav li {
+    float: left;
+    margin-right: 40px;
+}
+
+ul.nav li a {
+    color: #faf3bc;
+}*/
+
+.navigation a {
+    text-decoration: none;
+    color: #faf3bc;
+    background-color: #4fb69f;
+    font-size: 24px;
+    font-family: Verdana, sans-serif, Times;
+    padding: 20px;
+    display: block;
+    margin: 20px 0px;
+    width: 90%;
+    max-width: 1100px;
+}
+.content {
+    text-decoration: none;
+    color: #faf3bc;
+    background-color: #4fb69f;
+    font-size: 36px;
+    font-family: Verdana, sans-serif, Times;
+    padding: 10px;
+    display: block;
+    margin: 160px 0px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.heading a {
+    text-decoration: none;
+    color: #faf3bc;
+    background-color: #4fb69f;
+    font-size: 36px;
+    font-family: Verdana, sans-serif, Times;
+    padding: 10px;
+    display: block;
+    margin: 10px 0px;
+    text-transform: uppercase;
+    text-align: center;
+    width: 90%;
+}
+.feed {
+    transition:All 1s ease;
+    -webkit-transition:All 1s ease;
+    transform: rotate(0deg) scale(1) skew(0deg) translate(0px);
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(0px);
+    }
+.feed:hover {
+    transform: rotate(0deg) scale(1) skew(0deg) translate(0px, 30px);
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(0px, 30px);
+}
+.mealer {
+    transition:All 1s ease;
+    -webkit-transition:All 1s ease;
+    transform: rotate(0deg) scale(1) skew(0deg) translate(0px);
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(0px);
+    }
+.mealer:hover {
+    transform: rotate(0deg) scale(1) skew(0deg) translate(0px, 30px);
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(0px, 30px);
+}
+.trackers li {
+    transition:All 1s ease;
+    -webkit-transition:All 1s ease;
+    transform: rotate(0deg) scale(1) skew(0deg) translate(0px);
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(0px);
+    }
+.trackers li:hover {
+    transform: rotate(0deg) scale(1) skew(0deg) translate(0px, 30px);
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(0px, 30px);
+}
+.trackers div {
+    transition:All 1s ease;
+    -webkit-transition:All 1s ease;
+    transform: rotate(0deg) scale(1) skew(0deg) translate(0px);
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(0px);
+    }
+.trackers div:hover {
+    transform: rotate(0deg) scale(1) skew(0deg) translate(30px, 0px);
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(30px, 0px);
+}
+.options {
+    transition:All 1s ease;
+    -webkit-transition:All 1s ease;
+    transform: rotate(0deg) scale(1) skew(0deg) translate(0px);
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(0px);
+    }
+.options:hover {
+    transform: rotate(0deg) scale(1) skew(0deg) translate(0px, 30px);
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(0px, 30px);
+}
+
+.badges {
+    transition:All 1s ease;
+    -webkit-transition:All 1s ease;
+    transform: rotate(0deg) scale(1) skew(0deg) translate(0px);
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(0px);
+    }
+.badges:hover {
+    transform: rotate(0deg) scale(1) skew(0deg) translate(0px, 30px);
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(0px, 30px);
+}
+.tracker {
+    transition:All 1s ease;
+    -webkit-transition:All 1s ease;
+    transform: rotate(0deg) scale(1) skew(0deg) translate(0px);
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(0px);
+    }
+.tracker:hover {
+    transform: rotate(0deg) scale(1) skew(0deg) translate(0px, 30px);
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(0px, 30px);
+}
+.feed-navigation li {
+    transition:All 1s ease;
+    -webkit-transition:All 1s ease;
+    transform: rotate(0deg) scale(1) skew(0deg) translate(0px);
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(0px);
+    }
+.feed-navigation li:hover {
+    transform: rotate(0deg) scale(1) skew(0deg) translate(0px, 30px);
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(0px, 30px);
+}
+
+
+
+/*EXPERIMENTAL LINE BREAK*/
+
+
+
+
+
+/*
+.feed {
+    transition:All 1s ease;
+    -webkit-transition:All 1s ease;
+    transform: rotate(0deg) scale(1) skew(1deg) translate(10px);
+    -webkit-transform: rotate(0deg) scale(1) skew(1deg) translate(10px);
+    }
+.feed:hover {
+transform: rotate(0deg) scale(.85) skew(0deg) translate(0px, 100px);
+    -webkit-transform: rotate(0deg) scale(.85) skew(0deg) translate(0px, 100px);
+}
+.mealer {
+    transition:All 1s ease;
+    -webkit-transition:All 1s ease;
+    transform: rotate(0deg) scale(1) skew(1deg) translate(10px);
+    -webkit-transform: rotate(0deg) scale(1) skew(1deg) translate(10px);
+    }
+.mealer:hover {
+transform: rotate(0deg) scale(.85) skew(0deg) translate(0px, 100px);
+    -webkit-transform: rotate(0deg) scale(.85) skew(0deg) translate(0px, 100px);
+}
+.tracker {
+    transition:All 1s ease;
+    -webkit-transition:All 1s ease;
+    transform: rotate(0deg) scale(1) skew(1deg) translate(10px);
+    -webkit-transform: rotate(0deg) scale(1) skew(1deg) translate(10px);
+    }
+.tracker:hover {
+transform: rotate(0deg) scale(.85) skew(0deg) translate(0px, 100px);
+    -webkit-transform: rotate(0deg) scale(.85) skew(0deg) translate(0px, 100px);
+}
+.options {
+    transition:All 1s ease;
+    -webkit-transition:All 1s ease;
+    transform: rotate(0deg) scale(1) skew(1deg) translate(10px);
+    -webkit-transform: rotate(0deg) scale(1) skew(1deg) translate(10px);
+    }
+.options:hover {
+  transform: rotate(0deg) scale(.85) skew(0deg) translate(0px, 100px);
+    -webkit-transform: rotate(0deg) scale(.85) skew(0deg) translate(0px, 100px);
+}
+.heading {
+    transition:All 1s ease;
+    -webkit-transition:All 1s ease;
+    transform: rotate(0deg) scale(1) skew(1deg) translate(10px);
+    -webkit-transform: rotate(0deg) scale(1) skew(1deg) translate(10px);
+    }
+.heading:hover {
+    transform: rotate(0deg) scale(.67) skew(0deg) translate(10px);
+    -webkit-transform: rotate(0deg) scale(.67) skew(0deg) translate(10px);
+}
+.badges {
+    transition:All 1s ease;
+    -webkit-transition:All 1s ease;
+    transform: rotate(0deg) scale(1) skew(0deg) translate(10px);
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(10px);
+    }
+.badges:hover {
+    transform: rotate(0deg) scale(.85) skew(0deg) translate(0px, 100px);
+    -webkit-transform: rotate(0deg) scale(.85) skew(0deg) translate(0px, 100px);
+}
+EXPERIMENTAL LINE BREAK*/
+
+.heading {
+    transition:All 1s ease;
+    -webkit-transition:All 1s ease;
+    transform: rotate(0deg) scale(1) skew(1deg) translate(10px);
+    -webkit-transform: rotate(0deg) scale(1) skew(1deg) translate(10px);
+    }
+.heading:hover {
+    transform: rotate(0deg) scale(0.67) skew(1deg) translate(10px);
+    -webkit-transform: rotate(0deg) scale(0.67) skew(1deg) translate(10px);
+}
+
+.navigation a {
+    transition:All 1s ease;
+    -webkit-transition:All 1s ease;
+    transform: rotate(0deg) scale(1) skew(1deg) translate(10px);
+    -webkit-transform: rotate(0deg) scale(1) skew(1deg) translate(10px);
+}
+.navigation a:hover {
+transform: rotate(0deg) scale(.67) skew(0deg) translate(10px);
+    -webkit-transform: rotate(0deg) scale(.67) skew(0deg) translate(10px);
+}
+/* CSS for the_tracker.html*/
+/*.badges:after {
+    content: url('img/water-glass.jpg');
+}*/
+.feed_navigation a {
+    text-decoration: none;
+    color: #faf3bc;
+    background-color: #4fb69f;
+    font-size: 24px;
+    font-family: Verdana, sans-serif, Times;
+    padding: 10px 11px;
+    display: inline;
+    margin: 10px 0px;
+    float: left;
+    border: 1px solid #faf3bc;
+
+}
+.health_badges img {
+    position: absolute;
+    top: 50%;
+    margin-top: -20px;
+    left: 50%;
+    margin-left: -220px;
+}
+/*.grid_8 {
+    margin: 0 20px 10px 0;
+    padding-right: 320px;
+    float: left;
+    display: block; 
+}
+
+.omega{margin-right:0px;}*/
+.water_glass {
+  width: 200px; /* or whatever you want */
+  height: 200px; /* or whatever you want */
+  line-height: 200px; /* or whatever you want, should match height */
+  text-align: center;
+  padding-left: 33%;
+  margin-top: 20px;
+}
+
+.tracker_table {
+    font-size: 24px;
+    font-weight: lighter;
+    color: #4fb69f;
+    font-family: sans-serif;
+}
+/*tr:nth-child(n+0) {
+    color: #4fb69f;
+}
+td:nth-child(3) {
+    color: blue;
+}*/
+.content h3 {
+    border: 2px solid #faf3bc;
+    border-width: 6px;
+    font-weight: normal;
+}
+.content h5 {
+    border: 2px solid #faf3bc;
+    text-transform: capitalize;
+    text-decoration: none;
+    font-weight: normal;
+}
+.how_to {
+    background-color: #4fb69f;
+    display: inline-block;
+    margin-top: -200px;
+}
+.how_to p {
+    font-family: Verdana, sans-serif, Times;
+    color: #faf3bc;
+}
+.back a {
+    margin-top: 20px;
+    background-color: #4fb69f;
+    display: inline-block;
+    font-family: Verdana, sans-serif, Times;
+    color: #faf3bc;
+    padding: 10px;
+    text-decoration: none;
+}
+.back {
+    transition:All 1s ease;
+    -webkit-transition:All 1s ease;
+    transform: rotate(0deg) scale(1) skew(0deg) translate(0px);
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(0px);
+    }
+.back:hover {
+    transform: rotate(0deg) scale(1) skew(0deg) translate(0px, 30px);
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(0px, 30px);
+}
+/*.trackers a  {   
+    margin-right:20px;
+    background-color: #4fb69f;
+    display: inline;
+    font-family: Verdana, sans-serif, Times;
+    color: #faf3bc;
+    padding: 30px;
+    text-decoration: none;
+}*/
+.trackers li {
+    margin: 70px -40px;
+    list-style-type: none;
+}
+/*.trackers li:after {
+    content: url('img/progress_bar.jpg');
+}*/
+.progress {
+    margin: -30px 10px;
+}
+.profile_pic {
+    background-color: #faf3bc;
+    display: inline-block;
+    margin-top: 80px; 
+    margin-left: -500px;
+    border-radius: 50px;
+}
+.feed-navigation {
+    margin-left: 40px;
+}
+.feed-navigation li {
+    list-style-type: none;
+    background-color: #4fb69f;
+    font-size: 24px;
+    font-family: Verdana, sans-serif, Times;
+    padding: 20px 21px;
+    display: inline;
+    margin: 10px 0px;
+    float: left;
+    border: 1px solid #faf3bc;
+}
+.feed-navigation a {   
+    text-decoration: none;
+    color: #faf3bc;
+}
+.status {
+    background-color: #faf3bc;
+    border-color: #4fb69f;
+    margin-left: 0px;
+}
+textarea {
+    display: block;
+    margin-top: 80px;
+    resize: none;
+}
+.actual_feed li {
+    list-style-type: none;
+    background-color: #4fb69f;
+    font-size: 24px;
+    font-family: Verdana, sans-serif, Times;
+    padding: 10px 11px;
+    display: block;
+    margin: 10px 10px 10px -30px;
+    border: 1px solid #faf3bc;
+}
+.actual_feed a {
+    text-decoration: none;
+    color: #faf3bc;
+}
+.actual_feed p {
+    color: grey;
+    margin-bottom: 20px;
+}
+.logo {
+    width: 300px;
+    height: 300px;
+}
+.favicon {
+    max-width: 1100px;
+}
+.water-tracker {
+    margin-top: 40px;
+    background-color: #4fb69f;
+    display: inline-block;
+}
+.water-tracker a {
+    font-size: 36px;
+    color: #faf3bc;
+    margin: 20px;
+    padding: 130px 100px;
+    text-decoration: none;
+}
+.water-tracker img {
+
+}
+.food-tracker {
+    margin-top: 0px;
+    background-color: #4fb69f;
+    display: inline-block;
+}
+.food-tracker a {
+    font-size: 36px;
+    color: #faf3bc;
+    margin: 20px;
+    padding: 130px 100px;
+    text-decoration: none;
+}
+.trackers div {
+    border: 3px solid #faf3bc;
+}
+.peanuts {
+    margin-top:100px;
+    margin-left: 500px;
+}

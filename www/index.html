@@ -26,8 +26,10 @@
         <title>Home Screen</title>
         <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="css/bootstrap.css" rel="stylesheet" media="screen">
-        
+   <script src="js/parse.js"></script>      
    <script type="text/javascript" charset="utf-8">
+   var PARSE_APP = "HuzsO7v7OkSX4lsdBvUDnao4IwLPOwgHmcl38d3a";
+   var PARSE_JS = "KPzkymEo5O2hnxafmb51JjZkF7HamJLxDdMQnupq";
 
     // Wait for device API libraries to load
     //
@@ -36,6 +38,7 @@
     // device APIs are available
     //
     function onDeviceReady() {
+      Parse.initialize(PARSE_APP, PARSE_JS);
         // Empty
     }
 

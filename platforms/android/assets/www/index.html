@@ -23,9 +23,9 @@
     <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
         <title>Home Screen</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="css/bootstrap.css" rel="stylesheet" media="screen">
   </head>
   <body>
     
@@ -37,6 +37,8 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
+
+    <a class="navbar-brand nav-title" href="#">Title</a>
     <div class="nav-collapse collapse navbar-responsive-collapse">
         <ul class="nav navbar-nav">
           <li class="feed"><a href="the_feed.html">Feed</a></li>
@@ -44,15 +46,20 @@
           <li class="tracker"><a href="the_tracker.html">Trackers</a></li>
           <li class="badges"><a href="badges.html">My Badges</a></li>
           <li class="options"><a href="options.html">Options</a></li>
+          <li>
+          <p class="navbar-text">Signed in as Mark Otto</p>
+          <button type="button" class="btn btn-default navbar-btn">Log Out</button></li>
         </ul>
-     </div>   
+     </div>
   </div>
 </div>
 
+<div><a href="camera_test.html">Go Take a Picture Here!</a></div>
 <div class="container">
     <div class='row'>
         <div class='span12'>
-            <button class="btn btn-success"><i class='icon icon-camera'></button>
+            <button onclick="takePicture()" class="btn btn-success"><i class='icon icon-camera'></i>Take Photo</button>
+            <img src="" id="myImage"></img>
         </div>
     </div>
 
@@ -69,15 +76,33 @@
     <!-- JavaScript plugins (requires jQuery) -->
     <script src="http://code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-
+    <script src="js/bootstrap.js"></script>
     <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
     <script src="js/respond.js"></script>
 
-            <script type="text/javascript" src="phonegap.js"></script>
+
+        <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             app.initialize();
         </script>
+
+<script type="text/javascript">
+    function takePicture() {
+        navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+            destinationType: Camera.DestinationType.DATA_URL
+        });
+    }
+
+        function onSuccess(imageData) {
+            var image = document.getElementById('myImage');
+            image.src = "data:image/jpeg;base64," + imageData;
+        }
+
+        function onFail(message) {
+            alert('Failed because: ' + message);
+        }
+</script>
+
   </body>
 </html>

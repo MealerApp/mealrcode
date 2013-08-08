@@ -17,47 +17,92 @@
     specific language governing permissions and limitations
     under the License.
 -->
+<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
+  <head>
+    <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
         <title>Home Screen</title>
-    </head>
-    <body>   
+        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="css/bootstrap.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+    
+<div class="navbar">
+  <div class="container">
+    <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
 
-        <!--<div class="app">
-            <h1>PhoneFail</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Stone</p>
-                <p class="event received">Device is Ready (SIKE!)</p>
-            </div>
-        </div>-->
-        <!--<div class="grid_8 omega">
-            <ul class="nav">
-                <li class="about_us"><a href="about_us.html">About Us</a></li>
-                <li class="features"><a href="#">App Features</a></li>
-                <li class="team"><a href="#">The Team</a></li>
-                <li class="support"><a href="#">Support</a></li>
-            </ul>   
-        </div>-->       
-    <div class="home_screen">
-        <div class="heading"><a class="favicon" href="index.html">Mealer</a></div>
-        <div class="logo"><img src ="img/logo.png"></div>
-        <div class="navigation">
-        <div class="feed"><a href="the_feed.html">Feed</a></div>
-        <div class="mealer"><a href="the_mealer.html">Mealer</a></div>
-        <div class="tracker"><a href="the_tracker.html">Trackers</a></div>
-        <div class="badges"><a href="badges.html">My Badges</a></div>
-        <div class="options"><a href="options.html">Options</a></div>
+    <a class="navbar-brand nav-title" href="#">Title</a>
+    <div class="nav-collapse collapse navbar-responsive-collapse">
+        <ul class="nav navbar-nav">
+          <li class="feed"><a href="the_feed.html">Feed</a></li>
+          <li class="mealer"><a href="the_mealer.html">Mealer</a></li>
+          <li class="tracker"><a href="the_tracker.html">Trackers</a></li>
+          <li class="badges"><a href="badges.html">My Badges</a></li>
+          <li class="options"><a href="options.html">Options</a></li>
+          <li>
+          <p class="navbar-text">Signed in as Mark Otto</p>
+          <button type="button" class="btn btn-default navbar-btn">Log Out</button></li>
+        </ul>
+     </div>
+  </div>
+</div>
+
+<div><a href="camera_test.html">Go Take a Picture Here!</a></div>
+<div class="container">
+    <div class='row'>
+        <div class='span12'>
+            <button onclick="takePicture()" class="btn btn-success"><i class='icon icon-camera'></i>Take Photo</button>
+            <img src="" id="myImage"></img>
         </div>
     </div>
-    
-        <script type="text/javascript" src="phonegap.js"></script>
+
+    <div class="row">
+        <div class="well span12">
+            <div class='row'>
+                <a href="#" class=" span2"><img src="img/anear.png">Persons Name</a>
+                <p>here are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- JavaScript plugins (requires jQuery) -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.js"></script>
+    <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+    <script src="js/respond.js"></script>
+
+
+            <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             app.initialize();
         </script>
-    </body>
+
+<script type="text/javascript">
+    function takePicture() {
+        navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+            destinationType: Camera.DestinationType.DATA_URL
+        });
+    }
+
+        function onSuccess(imageData) {
+            var image = document.getElementById('myImage');
+            image.src = "data:image/jpeg;base64," + imageData;
+        }
+
+        function onFail(message) {
+            alert('Failed because: ' + message);
+        }
+</script>
+
+  </body>
 </html>

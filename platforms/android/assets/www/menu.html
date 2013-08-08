@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Home Screen</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+</head>
+<body>
+    <!-- JavaScript plugins (requires jQuery) -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+    <script src="js/respond.js"></script>
+
+            <script type="text/javascript" src="phonegap.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+
+<div class="navbar">
+  <div class="container">
+    <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <div class="nav-collapse collapse navbar-responsive-collapse">
+        <ul class="nav navbar-nav">
+          <li class="feed"><a href="the_feed.html">Feed</a></li>
+          <li class="mealer"><a href="the_mealer.html">Mealer</a></li>
+          <li class="tracker"><a href="the_tracker.html">Trackers</a></li>
+          <li class="badges"><a href="badges.html">My Badges</a></li>
+          <li class="options"><a href="options.html">Options</a></li>
+        </ul>
+     </div>   
+  </div>
+</div>
+
+<div class="container">
+    <div class='row'>
+        <div class='span12'>
+            <button onclick="takePicture()" class="btn btn-success"><i class='icon icon-camera'></i>Take Photo</button>
+            <img src="" id="myImage"></img>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="well span12">
+            <div class='row'>
+                <a href="#" class=" span2"><img src="img/anear.png">Persons Name</a>
+                <p>here are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+
+
+</html>
+

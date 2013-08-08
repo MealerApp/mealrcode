@@ -28,24 +28,22 @@
         <link href="css/bootstrap.css" rel="stylesheet" media="screen">
    <script src="js/parse.js"></script>      
    <script type="text/javascript" charset="utf-8">
-   var PARSE_APP = "HuzsO7v7OkSX4lsdBvUDnao4IwLPOwgHmcl38d3a";
-   var PARSE_JS = "KPzkymEo5O2hnxafmb51JjZkF7HamJLxDdMQnupq";
-
+    
     // Wait for device API libraries to load
     //
     document.addEventListener("deviceready", onDeviceReady, false);
 
     // device APIs are available
     //
-    function onDeviceReady() {
-      Parse.initialize(PARSE_APP, PARSE_JS);
-        // Empty
+    
+    $(document).ready(function() {
+	    alert('doc ready');
     }
+    
+    function onDeviceReady() {
+     
+      }
 
-    // alert dialog dismissed
-        function alertDismissed() {
-            // do something
-        }
 
     // Show a custom alertDismissed
     //
@@ -58,16 +56,21 @@
         );
     }
     
+    // alert dialog dismissed
+    function alertDismissed() {
+        // do something
+    }
+    
      function takePicture() {
         navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
             destinationType: Camera.DestinationType.DATA_URL
         });
     }
 
-        function onSuccess(imageData) {
-            var image = document.getElementById('myImage');
-            image.src = "data:image/jpeg;base64," + imageData;
-        }
+      function onSuccess(imageData) {
+          var image = document.getElementById('myImage');
+          image.src = "data:image/jpeg;base64," + imageData;
+      }
 
         function onFail(message) {
             alert('Failed because: ' + message);
@@ -109,7 +112,7 @@
             <img src="" id="myImage"></img>
         </div>
     </div>
-    <textarea>Update your status!</textarea><button>Submit</button>
+    <textarea id='postText'>Update your status!</textarea><button onclick="submitPost(); return false">Submit</button>
     <div class="row">
         <div class="well span12">
             <div class='row'>
@@ -135,7 +138,29 @@
         </script>
 
 <script type="text/javascript">
-
+function submitPost() {
+      var PARSE_APP = "HuzsO7v7OkSX4lsdBvUDnao4IwLPOwgHmcl38d3a";
+      var PARSE_JS = "KPzkymEo5O2hnxafmb51JjZkF7HamJLxDdMQnupq";
+      Parse.initialize(PARSE_APP, PARSE_JS);
+      var Post = Parse.Object.extend("Post");
+      console.log('device ready');
+          
+      var post = new Post();
+      var text = $('#postText').val();
+      post.set("text", text);
+    
+      post.save(null, {
+        success: function(post) {
+          // Execute any logic that should take place after the object is saved.
+          alert('New object created with objectId: ' + post.id);
+        },
+        error: function(post, error) {
+          // Execute any logic that should take place if the save fails.
+          // error is a Parse.Error with an error code and description.
+          alert('Failed to create new object, with error code: ' + error);
+        }
+      });
+    }    
 </script>
 
   </body>

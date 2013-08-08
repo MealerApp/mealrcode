@@ -26,6 +26,51 @@
         <title>Home Screen</title>
         <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="css/bootstrap.css" rel="stylesheet" media="screen">
+        
+   <script type="text/javascript" charset="utf-8">
+
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        // Empty
+    }
+
+    // alert dialog dismissed
+        function alertDismissed() {
+            // do something
+        }
+
+    // Show a custom alertDismissed
+    //
+    function showAlert() {
+        navigator.notification.alert(
+            'You are the winner!',  // message
+            alertDismissed,         // callback
+            'Game Over',            // title
+            'Done'                  // buttonName
+        );
+    }
+    
+     function takePicture() {
+        navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+            destinationType: Camera.DestinationType.DATA_URL
+        });
+    }
+
+        function onSuccess(imageData) {
+            var image = document.getElementById('myImage');
+            image.src = "data:image/jpeg;base64," + imageData;
+        }
+
+        function onFail(message) {
+            alert('Failed because: ' + message);
+        }
+
+    </script>
   </head>
   <body>
     
@@ -58,7 +103,7 @@
 <div class="container">
     <div class='row'>
         <div class='span12'>
-            <button onclick="takePicture()" class="btn btn-success"><i class='icon icon-camera'></i>Take Photo</button>
+            <button onclick="takePicture(); return false" class="btn btn-success"><i class='icon icon-camera'></i>Take Photo</button>
             <img src="" id="myImage"></img>
         </div>
     </div>
@@ -88,20 +133,7 @@
         </script>
 
 <script type="text/javascript">
-    function takePicture() {
-        navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
-            destinationType: Camera.DestinationType.DATA_URL
-        });
-    }
 
-        function onSuccess(imageData) {
-            var image = document.getElementById('myImage');
-            image.src = "data:image/jpeg;base64," + imageData;
-        }
-
-        function onFail(message) {
-            alert('Failed because: ' + message);
-        }
 </script>
 
   </body>

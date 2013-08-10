@@ -4,25 +4,39 @@
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Options Screen</title>
+        <title>Badges Screen</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <script src="js/parse.js"></script>      
+        <script type="text/javascript" src="js/jquery.min.js"></script>
 	</head>
 	<body>
-        <script type="text/javascript" src="phonegap.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
 
-           <div class="feed_screen">
-        <div class="heading"><a href="index.html">Mealer</a></div>
-        <div class="feed_navigation">
-        <div class="feed"><a href="the_feed.html">Feed</a></div>
-        <div class="mealer"><a href="the_mealer.html">Mealer</a></div>
-        <div class="tracker"><a href="the_tracker.html">Trackers</a></div>
-        <div class="badges"><a href="badges.html">My Badges</a></div>
-      </div>
-    </div>
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
+    <button style="padding: 10px;" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+
+    <a class="navbar-brand nav-title" href="index.html">Mealr</a>
+    <div class="nav-collapse collapse navbar-responsive-collapse">
+        <ul class="nav navbar-nav">
+          <li class="profile"><a href="profile.html">Profile</a></li>
+          
+          <li class="tracker"><a href="the_tracker.html">Trackers</a></li>
+          <li class="badges"><a href="badges.html">My Badges</a></li>
+          <li class="options"><a href="options.html">Options</a></li>
+          <li>
+          <p class="navbar-text">Signed in as Mark Otto</p>
+          <button type="button" class="btn btn-default navbar-btn">Log Out</button></li>
+        </ul>
+     </div>
+  </div>
+</div>
+
         <div class="content">
             <h3>OPTIONS</h3>
             <h5>Goals</h5>
@@ -30,5 +44,18 @@
             <h5>Display</h5>
             <h5>Privacy</h5>
         </div>
+
+            <!-- JavaScript plugins (requires jQuery) -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.js"></script>
+    <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+    <!--<script src="js/respond.js"></script> -->
+    <script type="text/javascript" src="phonegap.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+
 	</body>
 </html>                 

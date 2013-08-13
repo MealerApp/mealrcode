@@ -27,6 +27,18 @@
         <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
         <script src="js/parse.js"></script>      
         <script type="text/javascript" src="js/jquery.min.js"></script>
+                <!-- JavaScript plugins (requires jQuery) -->
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.js"></script>
+        <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+        <!--<script src="js/respond.js"></script> -->
+        <script type="text/javascript" src="phonegap.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+     <!--    // <script type="text/javascript" src="js/cordova.js"></script>  -->
+        <script type="text/javascript">
+            app.initialize();
+        </script>
         <script type="text/javascript" charset="utf-8">
     
     // // Wait for device API libraries to load
@@ -91,7 +103,6 @@
     <div class="nav-collapse collapse navbar-responsive-collapse">
         <ul class="nav navbar-nav">
           <li class="profile"><a href="profile.html">Profile</a></li>
-          
           <li class="tracker"><a href="the_tracker.html">Trackers</a></li>
           <li class="badges"><a href="badges.html">My Badges</a></li>
           <li class="options"><a href="options.html">Options</a></li>
@@ -107,10 +118,11 @@
     <div class='row'>
         <div class='span12'>
             <a href="#" onclick="takePicture();" class="btn btn-lg btn-success"><i class='icon icon-camera'></i>Take Photo</a>
-            <img src="" id="myImage"></img>
+            <img style="width:60px;height:60px;" src="" id="myImage"></img>
         </div>
     </div>
     <textarea id='postText'>              Update your status!</textarea><a href="#" class='btn btn-lg btn-primary' onclick="submitPost();">Submit</a>
+    <a href="#" class="btn btn-lg btn-primary" onclick="checkConnection();">Check Connection</a>
     <div class="row">
         <div class="well span12">
             <div class='row'>
@@ -147,18 +159,7 @@
     </div>
 </div>
 
-    <!-- JavaScript plugins (requires jQuery) -->
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.js"></script>
-    <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-    <!--<script src="js/respond.js"></script> -->
-    <script type="text/javascript" src="phonegap.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript">
-        app.initialize();
-    </script>
-
+<!-- POST -->
 <script type="text/javascript">
 function submitPost() {
       var PARSE_APP = "HuzsO7v7OkSX4lsdBvUDnao4IwLPOwgHmcl38d3a";
@@ -185,5 +186,40 @@ function submitPost() {
     }    
 </script>
 
+
+<!-- CONNECTION API -->
+    <script type="text/javascript" charset="utf-8">
+
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false)
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        checkConnection();
+        console.log("About to check connection")
+    }
+
+        function checkConnection() {
+            var networkState = navigator.connection;
+
+            var states = {};
+            states[Connection.UNKNOWN]  = 'Unknown connection';
+            states[Connection.ETHERNET] = 'Ethernet connection';
+            states[Connection.WIFI]     = 'WiFi connection';
+            states[Connection.CELL_2G]  = 'Cell 2G connection';
+            states[Connection.CELL_3G]  = 'Cell 3G connection';
+            states[Connection.CELL_4G]  = 'Cell 4G connection';
+            states[Connection.CELL]     = 'Cell generic connection';
+            states[Connection.NONE]     = 'No network connection';
+
+            alert('Connection type: ' + states[networkState]);
+            console.log("ALERT SHOULD RUN");
+
+        }
+
+        checkConnection();
+
+    </script>
   </body>
 </html>

@@ -1,3 +1,4 @@
 <feature name="http://api.phonegap.com/1.0/file" /> 
 <plugin name="Camera" value="org.apache.cordova.CameraLauncher" />
 <plugin name="Notification" value="org.apache.cordova.Notification"/>
+<plugin name="NetworkStatus" value="org.apache.cordova.NetworkManager" />

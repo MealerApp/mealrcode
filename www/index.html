@@ -47,10 +47,10 @@
     // // device APIs are available
     // //
     //   
-    // 
+    // // 
     // function onDeviceReady() {
-    //  
-    //   }
+    //   
+    // }
 
 
     // Show a custom alertDismissed
@@ -161,9 +161,6 @@
 <!-- POST -->
 <script type="text/javascript">
 function submitPost() {
-      var PARSE_APP = "HuzsO7v7OkSX4lsdBvUDnao4IwLPOwgHmcl38d3a";
-      var PARSE_JS = "KPzkymEo5O2hnxafmb51JjZkF7HamJLxDdMQnupq";
-      Parse.initialize(PARSE_APP, PARSE_JS);
       var Post = Parse.Object.extend("Post");
       console.log('device ready');
           
@@ -195,8 +192,16 @@ function submitPost() {
     // device APIs are available
     //
     function onDeviceReady() {
-        checkConnection();
-        console.log("About to check connection")
+      var PARSE_APP = "HuzsO7v7OkSX4lsdBvUDnao4IwLPOwgHmcl38d3a";
+      var PARSE_JS = "KPzkymEo5O2hnxafmb51JjZkF7HamJLxDdMQnupq";
+      Parse.initialize(PARSE_APP, PARSE_JS);
+      
+      currentUser = Parse.User.current();
+      if(!currentUser) {
+        window.location = "login.html";
+      }
+      checkConnection();
+      console.log("About to check connection")
     }
 
         function checkConnection() {
@@ -212,7 +217,7 @@ function submitPost() {
             states[Connection.CELL]     = 'Cell generic connection';
             states[Connection.NONE]     = 'No network connection';
 
-            alert('Connection type: ' + states[networkState]);
+            //alert('Connection type: ' + states[networkState]);
             console.log("ALERT SHOULD RUN");
 
         }

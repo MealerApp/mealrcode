@@ -199,6 +199,7 @@ function submitPost() {
       
       currentUser = Parse.User.current();
       if(!currentUser) {
+        // do an alert here to see if logged in
         window.location = "login.html";
       }
       checkConnection();

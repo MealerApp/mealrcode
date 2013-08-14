@@ -83,7 +83,16 @@
   </div>    
 
 <script type="text/javascript">
-    $(document).on("touchend","#registerForm", function(e) {
+   
+   function onDeviceReady() {
+     
+    }
+      
+    $('#registerForm').submit(function(e) {
+        var PARSE_APP = "HuzsO7v7OkSX4lsdBvUDnao4IwLPOwgHmcl38d3a";
+        var PARSE_JS = "KPzkymEo5O2hnxafmb51JjZkF7HamJLxDdMQnupq";
+        Parse.initialize(PARSE_APP, PARSE_JS);
+        
         e.preventDefault();
  
         $("#regstatus").html("").removeClass("errorDiv");
@@ -103,7 +112,6 @@
             $("#regstatus").html(errors).addClass("errorDiv");
             return;
         }
- 
         //try to register with Parse and see if it works.
         var user = new Parse.User();
         user.set("username", username);
@@ -111,7 +119,6 @@
         user.set("email", email);
  
         $("#regstatus").html("<b>Registering user...</b>");
- 
         user.signUp(null, {
             success:function(user) {
                 currentUser = user;

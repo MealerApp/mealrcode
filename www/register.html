@@ -107,7 +107,9 @@
         if(username === "") errors += "Username required.<br/>";
         if(password === "") errors += "Password required.<br/>";
         if(email === "") errors += "Email required.<br/>";
- 
+        
+        // ANEAR: here is where you could also validate that the checkbox for terms and conditions is checked
+        
         if(errors !== "") {
             $("#regstatus").html(errors).addClass("errorDiv");
             return;

@@ -1,5 +1,5 @@
 <img src="img/logo.png" style="width:100%;height:100%;">
-<form class="form-horizontal">
+<form class="form-horizontal" id="signInForm">
   <div class="control-group">
     <label class="control-label" for="inputEmail">Email</label>
     <div class="controls">
@@ -13,10 +13,48 @@
     </div>
   </div>
   <div class="control-group">
-    <div class="controls">    
-      <a href="index.html" onclick="#" class="btn btn-success btn-lg">Log In</a>
+    <div class="controls">
+      <button type="submit" class="btn">Log In</button>
     </div>
       <p>Don't have an account?</p>
       <a onclick="$('#mainOutlet').load('register.html');" class="btn btn-success">Sign Up Here</a></div>
   </div>
 </form>
+
+<script>
+    $('#signInForm').submit(function(e) {
+        e.preventDefault();
+        console.log('got');
+        $("#loginstatus").html("").removeClass("errorDiv");
+ 
+        //get values
+        var username = $("#inputEmail").val();
+        var password = $("#inputPassword").val();
+        console.log(username + '     ' + password);
+        //do some basic validation here
+        var errors = "";
+        if(username === "") errors += "Email required.<br/>";
+        if(password === "") errors += "Password required.<br/>";
+ 
+        if(errors !== "") {
+            $("#loginstatus").html(errors).addClass("errorDiv");
+            return;
+        }
+ 
+        $("#regstatus").html("<b>Logging in...</b>");
+ 
+        Parse.User.logIn(username, password, {
+            success:function(user) {
+                currentUser = user;
+                $('#mainOutlet').load('feed.html')
+            },
+            error:function(user, error) {
+                console.log("ERROR!");
+                console.dir(error);
+                $("#loginstatus").html(error.message).addClass("errorDiv");
+            }
+        });
+    });
+
+
+</script>

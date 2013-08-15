@@ -1,0 +1,65 @@
+<a href="#" onclick="takePicture();" class="btn btn-lg btn-success nav_btn"><i class='icon icon-camera'></i>Take Photo</a>
+<img style="width:6.75em; height:6.75em; image-orientation: 90deg; " src="" id="myImage"></img>
+
+<input id='postText' type="text" placeholder="Update your status!"><a href="#" class='btn btn-lg btn-primary submit nav_btn' onclick="submitPost();">Submit</a>
+    <a href="#" class="btn btn-lg btn-primary nav_btn" onclick="checkConnection();">Check Connection</a>
+    <div class="row">
+        <div class="well span12">
+            <div class='row'>
+                <img class="default_pic" src="img/anear.png"><a href="#" class=" span2">Anear Nahar</a>
+                <p class="status_text">Today's workout was amazing! Met some of my old friends along the way too :)
+                </p>
+                <div class="like"><a href="#" class="btn footer">Pat</a>
+                <a href="#" class="btn footer">Challenge</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="well span12">
+            <div class='row'>
+                <img class="default_pic" src="img/anear.png"><a href="#" class=" span2">Twasif Mohammed</a>
+                <p class="status_text">Twasif just won his first badge! Give him a pat on the back</p>
+                <img src="img/first_badge.png">
+                <div class="like"><a href="#" class="btn footer">Pat</a>
+                <a href="#" class="btn footer">Challenge</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="well span12">
+            <div class='row'>
+                <img class="default_pic" src="img/anear.png"><a href="#" class=" span2">Rajesh Batman</a>
+                <p class="status_text">Just had lunch! This fruit was awesome (GO FRUIT)</p>
+                <img class="status_images" src="img/lunch.jpg"><br>
+                <div class="like"><a href="#" class="btn footer">Pat</a>
+                <a href="#" class="btn footer">Challenge</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- POST -->
+<script type="text/javascript">
+function submitPost() {
+      var Post = Parse.Object.extend("Post");
+      console.log('device ready');
+          
+      var post = new Post();
+      var text = $('#postText').val();
+      post.set("text", text);
+    
+      post.save(null, {
+        success: function(post) {
+          // Execute any logic that should take place after the object is saved.
+          alert('New object created with objectId: ' + post.id);
+        },
+        error: function(post, error) {
+          // Execute any logic that should take place if the save fails.
+          // error is a Parse.Error with an error code and description.
+          alert('Failed to create new object, with error code: ' + error);
+        }
+      });
+    }    
+</script>
+
+

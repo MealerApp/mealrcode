@@ -79,10 +79,10 @@
           <li>
           <p class="navbar-text"><script type="text/javascript">  
 
-                    var currentUser = Parse.User.current();
-
-              document.write("Signed in as " + currentUser.email)
-
+                //     var currentUser = Parse.User.current();
+                // 
+                // document.write("Signed in as " + currentUser.email)
+  
           </script></p>
           <button onclick="location.href='login.html'" type="button" class="btn btn-default navbar-btn">Log Out</button></li>
         </ul>
@@ -132,21 +132,22 @@ function submitPost() {
       var PARSE_APP = "HuzsO7v7OkSX4lsdBvUDnao4IwLPOwgHmcl38d3a";
       var PARSE_JS = "KPzkymEo5O2hnxafmb51JjZkF7HamJLxDdMQnupq";
       Parse.initialize(PARSE_APP, PARSE_JS);
-      console.log('init');
-      
-      var currentUser = Parse.User.current();
-      if(!currentUser) {
-        $('#mainOutlet').load('login.html');
-        $('#navbar').hide();
-        // window.location.assign("login.html");
-      }
-      else{
-        $('#mainOutlet').load('feed.html');
-      }    
-    
+      console.log('odr');
     }
   
     $(document).ready(function() {
+      console.log('doc ready');
+      var PARSE_APP = "HuzsO7v7OkSX4lsdBvUDnao4IwLPOwgHmcl38d3a";
+      var PARSE_JS = "KPzkymEo5O2hnxafmb51JjZkF7HamJLxDdMQnupq";
+      console.log(Parse.initialize(PARSE_APP, PARSE_JS));
+      
+      var currentUser = Parse.User.current()
+      if (currentUser){
+        $('#mainOutlet').load('feed.html');
+      }
+      else{
+        $('#mainOutlet').load('login.html');
+      }
       
   
       

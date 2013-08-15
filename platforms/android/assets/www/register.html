@@ -27,16 +27,17 @@
     </div>
   </div>
 </form>
-
+ 
 <script type="text/javascript"> 
   $('#registerForm').submit(function(e) {
-        // var PARSE_APP = "HuzsO7v7OkSX4lsdBvUDnao4IwLPOwgHmcl38d3a";
-        //        var PARSE_JS = "KPzkymEo5O2hnxafmb51JjZkF7HamJLxDdMQnupq";
-        //        Parse.initialize(PARSE_APP, PARSE_JS);
-        
-        e.preventDefault();
+      var PARSE_APP = "HuzsO7v7OkSX4lsdBvUDnao4IwLPOwgHmcl38d3a";
+      var PARSE_JS = "KPzkymEo5O2hnxafmb51JjZkF7HamJLxDdMQnupq";
+      Parse.initialize(PARSE_APP, PARSE_JS);
+    
+      e.preventDefault();
+ 
       $("#regstatus").html("").removeClass("errorDiv");
-
+ 
       //get values
       var username = $("#username").val();
       var password = $("#password").val();
@@ -59,12 +60,12 @@
       user.set("username", username);
       user.set("password", password);
       user.set("email", email);
-
+ 
       $("#regstatus").html("<b>Registering user...</b>");
       user.signUp(null, {
           success:function(user) {
               currentUser = user;
-              $('#mainOutlet').load('feed_partials.html')
+              $('#mainOutlet').load('feed.html')
           },
           error:function(user, error) {
               console.log("ERROR!");
@@ -73,16 +74,19 @@
           }
       });
   });
-
-  var errors = true;
-  function checkCheckBoxes(theForm) {
-      if (
-      theForm.termsCheckbox.checked == false) 
-      {
-        errors += "You forgot to agree to terms and conditions.<br/>";
-          return false;
-      } else {    
-          return true;
-      }
-  }
+  </script>
+  <script type="text/javascript" language="JavaScript">
+<!--
+var errors = true;
+function checkCheckBoxes(theForm) {
+    if (
+    theForm.termsCheckbox.checked == false) 
+    {
+      errors += "You forgot to agree to terms and conditions.<br/>";
+        return false;
+    } else {    
+        return true;
+    }
+}
+//-->
 </script>    

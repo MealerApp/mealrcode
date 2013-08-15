@@ -38,53 +38,8 @@
         <script type="text/javascript">
             app.initialize();
         </script>
-        <script type="text/javascript" charset="utf-8">
+    <script type="text/javascript" charset="utf-8">
 
-        $(document).ready(function() {
-      var PARSE_APP = "HuzsO7v7OkSX4lsdBvUDnao4IwLPOwgHmcl38d3a";
-      var PARSE_JS = "KPzkymEo5O2hnxafmb51JjZkF7HamJLxDdMQnupq";
-      Parse.initialize(PARSE_APP, PARSE_JS);
-      
-      currentUser = Parse.User.current();
-      if(!currentUser) {
-        window.location.assign("login.html");
-        console.log("PIE");
-      }
-
-      checkConnection();
-      console.log("About to check connection")
-    });
-         var PARSE_APP = "HuzsO7v7OkSX4lsdBvUDnao4IwLPOwgHmcl38d3a";
-         var PARSE_JS = "KPzkymEo5O2hnxafmb51JjZkF7HamJLxDdMQnupq";
-    // // Wait for device API libraries to load
-    // //
-    // document.addEventListener("deviceready", onDeviceReady, false);
-    // 
-    // // device APIs are available
-    // //
-    //   
-    // // 
-    // function onDeviceReady() {
-    //   
-    // }
-
-
-    // Show a custom alertDismissed
-    // //
-    // function showAlert() {
-    //     navigator.notification.alert(
-    //         'You are the winner!',  // message
-    //         alertDismissed,         // callback
-    //         'Game Over',            // title
-    //         'Done'                  // buttonName
-    //     );
-    // }
-    // 
-    // // alert dialog dismissed
-    // function alertDismissed() {
-    //     // do something
-    // }
-    // 
       function takePicture() {
         navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
             destinationType: Camera.DestinationType.DATA_URL
@@ -177,14 +132,7 @@ function submitPost() {
 </script>
 
 
-<!-- CONNECTION API -->
-    <script type="text/javascript" charset="utf-8">
-
-    // Wait for device API libraries to load
-    // //
-    // document.addEventListener("deviceready", onDeviceReady, false)
-    // device APIs are available
-    //
+  <script type="text/javascript" charset="utf-8">
     $(document).ready(function() {
       var PARSE_APP = "HuzsO7v7OkSX4lsdBvUDnao4IwLPOwgHmcl38d3a";
       var PARSE_JS = "KPzkymEo5O2hnxafmb51JjZkF7HamJLxDdMQnupq";
@@ -195,12 +143,11 @@ function submitPost() {
         $('#mainOutlet').load('login.html');
         $('#navbar').hide();
         // window.location.assign("login.html");
-
       }
       else{
-        $('#mainOutlet').load('feed_partials.html');
+        $('#mainOutlet').load('feed.html');
       }    
     });
-    </script>
+  </script>
   </body>
 </html>

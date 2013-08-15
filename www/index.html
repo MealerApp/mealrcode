@@ -41,6 +41,7 @@
         <script type="text/javascript" charset="utf-8">
          var PARSE_APP = "HuzsO7v7OkSX4lsdBvUDnao4IwLPOwgHmcl38d3a";
          var PARSE_JS = "KPzkymEo5O2hnxafmb51JjZkF7HamJLxDdMQnupq";
+              Parse.initialize(PARSE_APP, PARSE_JS);
     // // Wait for device API libraries to load
     // //
     // document.addEventListener("deviceready", onDeviceReady, false);
@@ -52,6 +53,10 @@
     // function onDeviceReady() {
     //   
     // }
+
+        document.addEventListener("offline", function(){ alert("You're offline") }, false);
+
+        document.addEventListener("online", function(){ alert("You're online") }, false);
 
 
     // Show a custom alertDismissed
@@ -92,7 +97,7 @@
 <div class="navbar navbar-fixed-top">
   <div class="container">
     <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
-    <button style="padding: 10px;" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+    <button style="padding: 10px; background-color:#6BA9FE;" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
@@ -107,7 +112,21 @@
           <li class="badges"><a href="badges.html">My Badges</a></li>
           <li class="options"><a href="options.html">Options</a></li>
           <li>
-          <p class="navbar-text">Signed in as Mark Otto</p>
+          <p class="navbar-text"><script type="text/javascript">    
+
+              //     var PARSE_APP = "HuzsO7v7OkSX4lsdBvUDnao4IwLPOwgHmcl38d3a";
+              //     var PARSE_JS = "KPzkymEo5O2hnxafmb51JjZkF7HamJLxDdMQnupq";
+              //     Parse.initialize(PARSE_APP, PARSE_JS);
+
+              //       var username = $("#username").val();
+              //       var password = $("#password").val();
+              //       var email = $("#email").val();
+
+              //       currentUser = Parse.User.current();
+
+              // document.write("Signed in as " + currentUser.username)
+
+          </script></p>
           <button type="button" class="btn btn-default navbar-btn">Log Out</button></li>
         </ul>
      </div>
@@ -117,43 +136,42 @@
 <div class="container">
     <div class='row'>
         <div class='span12'>
-            <a href="#" onclick="takePicture();" class="btn btn-lg btn-success"><i class='icon icon-camera'></i>Take Photo</a>
-            <img style="width:60px;height:60px;" src="" id="myImage"></img>
+            <a href="#" onclick="takePicture();" class="btn btn-lg btn-success nav_btn"><i class='icon icon-camera'></i>Take Photo</a>
+            <img style="width:6.75em; height:6.75em; image-orientation: 90deg; " src="" id="myImage"></img>
         </div>
     </div>
-    <textarea id='postText'>              Update your status!</textarea><a href="#" class='btn btn-lg btn-primary' onclick="submitPost();">Submit</a>
-    <a href="#" class="btn btn-lg btn-primary" onclick="checkConnection();">Check Connection</a>
+    <input id='postText' type="text" placeholder="Update your status!"><a href="#" class='btn btn-lg btn-primary submit nav_btn' onclick="submitPost();">Submit</a>
+    <a href="#" class="btn btn-lg btn-primary nav_btn" onclick="checkConnection();">Check Connection</a>
     <div class="row">
         <div class="well span12">
             <div class='row'>
-                <a href="#" class=" span2"><img src="img/anear.png">Anear Nahar</a>
-                <p>Today's workout was amazing! Met some of my old friends along the way too :)
+                <img class="default_pic" src="img/anear.png"><a href="#" class=" span2">Anear Nahar</a>
+                <p class="status_text">Today's workout was amazing! Met some of my old friends along the way too :)
                 </p>
-                <div class="like"><a href="#" class="btn">Pat</a>
-                <a href="#" class="btn">Challenge</a></div>
+                <div class="like"><a href="#" class="btn footer">Pat</a>
+                <a href="#" class="btn footer">Challenge</a></div>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="well span12">
             <div class='row'>
-                <a href="#" class=" span2"><img src="img/anear.png">Twasif Mohammed</a>
-                <p>Twasif just won his first badge! Give him a pat on the back</p>
+                <img class="default_pic" src="img/anear.png"><a href="#" class=" span2">Twasif Mohammed</a>
+                <p class="status_text">Twasif just won his first badge! Give him a pat on the back</p>
                 <img src="img/first_badge.png">
-                <div class="like"><a href="#" class="btn">Pat</a>
-                <a href="#" class="btn">Challenge</a></div>
-
+                <div class="like"><a href="#" class="btn footer">Pat</a>
+                <a href="#" class="btn footer">Challenge</a></div>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="well span12">
             <div class='row'>
-                <a href="#" class=" span2"><img src="img/anear.png">Rajesh Batman</a>
-                <p>Just had lunch! This fruit was awesome (GO FRUIT)</p>
-                <img src="img/lunch.jpg"><br>
-                <div class="like"><a href="#" class="btn">Pat</a>
-                <a href="#" class="btn">Challenge</a></div>
+                <img class="default_pic" src="img/anear.png"><a href="#" class=" span2">Rajesh Batman</a>
+                <p class="status_text">Just had lunch! This fruit was awesome (GO FRUIT)</p>
+                <img class="status_images" src="img/lunch.jpg"><br>
+                <div class="like"><a href="#" class="btn footer">Pat</a>
+                <a href="#" class="btn footer">Challenge</a></div>
             </div>
         </div>
     </div>
@@ -188,25 +206,27 @@ function submitPost() {
     <script type="text/javascript" charset="utf-8">
 
     // Wait for device API libraries to load
-    //
-    document.addEventListener("deviceready", onDeviceReady, false)
+    // //
+    // document.addEventListener("deviceready", onDeviceReady, false)
     // device APIs are available
     //
-    function onDeviceReady() {
+$(document).ready(function() {
       var PARSE_APP = "HuzsO7v7OkSX4lsdBvUDnao4IwLPOwgHmcl38d3a";
       var PARSE_JS = "KPzkymEo5O2hnxafmb51JjZkF7HamJLxDdMQnupq";
       Parse.initialize(PARSE_APP, PARSE_JS);
       
       currentUser = Parse.User.current();
       if(!currentUser) {
-        window.location = "login.html";
+        window.location.assign("login.html");
+        console.log("PIE");
       }
+
       checkConnection();
       console.log("About to check connection")
-    }
+    });
 
         function checkConnection() {
-            var networkState = navigator.connection;
+            var networkState = navigator.network.connection.type;
 
             var states = {};
             states[Connection.UNKNOWN]  = 'Unknown connection';
@@ -224,7 +244,6 @@ function submitPost() {
         }
 
         checkConnection();
-
     </script>
   </body>
 </html>

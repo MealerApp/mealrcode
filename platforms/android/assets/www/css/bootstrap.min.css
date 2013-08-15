@@ -22,12 +22,13 @@
  	float: left;
  	list-style-type: none;
  	background-color: #FFDB43;
- 	padding: 10px;
+ 	padding: 20px;
  	margin-left: 10px;
  }
  .feed-navigation a {
  	color: #6BA9FE;
  	text-decoration: none; 
+ 	padding: 20px;
  }
  body {
  	padding-top: 100px;
@@ -108,4 +109,29 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', end
 }
 .friends a {
 	width: 75%;
+}
+.default_pic {
+	width: 9.3em;
+	height: 9.3em;
+}
+.footer {
+	width: 40%;
+	margin-left: 5px;
+}
+.status_text {
+	margin-top: 2%;
+	margin-left: 13%;
+}
+p {
+	font-size: 24px;
+} 
+.span2 {
+	font-size: 24px;
+}
+.status_images {
+	width: 100%;
+	height: 50%;
+}
+.nav_btn {
+	padding: 20px;
 }

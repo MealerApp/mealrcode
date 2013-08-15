@@ -41,27 +41,36 @@
   </head>
 
   <body>   
-    <img src="img/logo.png" style="width:21.875em;height:21.875em;">
+        <form onsubmit="return checkCheckBoxes(this);" class="form-horizontal span12" id="registerForm" >
+          <div class="control-group">
+            <div class="controls">
+              <label class="checkbox">
+                <input type="CHECKBOX" name="termsCheckbox" id="checkbox" placeholder="Checkbox"> I Accept the Terms and Conditions
+              </label>
+              <span id="regstatus"></span>
+              <button type="submit" class="btn" onclick="checkCheckBoxes()">Register</button>
+            </div>
+          </div>
+        </form><!-- 
+<form action="../" onsubmit="return checkCheckBoxes(this);">
+    <p><input type="CHECKBOX" name="MyCheckbox" value="This..."> This...</p>
+    <p><input type="SUBMIT" value="Submit!"></p>
+</form> -->
 
-  <form class="form-horizontal">
-  <div class="control-group">
-    <label class="control-label" for="inputEmail">Email</label>
-    <div class="controls">
-      <input type="text" id="inputEmail" placeholder="Email">
-    </div>
-  </div>
-  <div class="control-group">
-    <label class="control-label" for="inputPassword">Password</label>
-    <div class="controls">
-      <input type="password" id="inputPassword" placeholder="Password">
-    </div>
-  </div>
-  <div class="control-group">
-    <div class="controls">    
-      <a href="index.html" onclick="#" class="btn btn-success">Log In</a></div>
-      <p>Don't have an account?</p>
-      <a href="register.html" onclick="#" class="btn btn-success">Sign Up Here</a></div>
-  </div>
-</form>
+<script type="text/javascript" language="JavaScript">
+<!--
+function checkCheckBoxes(theForm) {
+    if (
+    theForm.termsCheckbox.checked == false) 
+    {
+        // alert ('You forgot to agree to the Terms and Conditions');
+        document.getElementById("checkbox").innerHTML="You forgot to agree to the Terms and Conditions";
+        return false;
+    } else {    
+        return true;
+    }
+}
+//-->
+</script> 
   </body>
 </html>

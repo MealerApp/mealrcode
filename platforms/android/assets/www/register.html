@@ -65,7 +65,7 @@
       user.signUp(null, {
           success:function(user) {
               currentUser = user;
-              $('#mainOutlet').load('feed.html')
+              $('#mainOutlet').load('feed_partials.html')
           },
           error:function(user, error) {
               console.log("ERROR!");

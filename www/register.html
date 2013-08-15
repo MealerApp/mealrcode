@@ -23,7 +23,7 @@
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <title>Home Screen</title>
+        <title>Register Screen</title>
         <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
         <script src="js/parse.js"></script>      
         <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -46,35 +46,35 @@
   </head>
 
 <body>
-  <div class='container'>
+  <div class="container login_page">
     <div class='row'>
       <div class='span12'>
           <form onsubmit="return checkCheckBoxes(this);" class="form-horizontal span12" id="registerForm" >
           <div class="control-group">
             <label class="control-label" for="username">Username</label>
             <div class="controls">
-              <input type="text" id="username" placeholder="Username">
+              <input class="login_screen" type="text" id="username" placeholder="Username">
             </div>
           </div>
           <div class="control-group">
             <label class="control-label" for="email">Email</label>
             <div class="controls">
-              <input type="text" id="email" placeholder="Email">
+              <input class="login_screen" type="text" id="email" placeholder="Email">
             </div>
           </div>
           <div class="control-group">
             <label class="control-label" for="password">Password</label>
             <div class="controls">
-              <input type="password" id="password" placeholder="Password">
+              <input class="login_screen" type="password" id="password" placeholder="Password">
             </div>
           </div>
           <div class="control-group">
             <div class="controls">
                <label class="checkbox">
-                 <input type="CHECKBOX" name="termsCheckbox" id="checkbox" placeholder="Checkbox"> I Accept the Terms and Conditions
+                 <input type="checkbox" name="termsCheckbox" id="checkbox" placeholder="Checkbox"> <p>I Accept the Terms and Conditions</p>
               </label>
               <span id="regstatus"></span>
-              <button type="submit" class="btn">Register</button>
+              <button type="submit" class="btn btn-success btn-lg nav_btn">Register</button>
             </div>
           </div>
         </form>
@@ -104,10 +104,10 @@
         var checkbox = $("#checkbox").val();
         //do some basic validation here
         var errors = "";
-        if(username === "") errors += "Username required.<br/>";
-        if(password === "") errors += "Password required.<br/>";
-        if(email === "") errors += "Email required.<br/>";
-        if(checkbox === "") errors += "You forgot to agree to terms and conditions.<br/>";
+        if(username === "") errors += "Oops! Username required<br/>";
+        if(password === "") errors += "Oops! Password required<br/>";
+        if(email === "") errors += "Oops! Email required<br/>";
+        if(checkbox === false) errors += "You forgot to agree to terms and conditions.<br/>";
         // ANEAR: here is where you could also validate that the checkbox for terms and conditions is checked
         
         if(errors !== "") {
@@ -120,7 +120,7 @@
         user.set("password", password);
         user.set("email", email);
  
-        $("#regstatus").html("<b>Registering user...</b>");
+        $("#regstatus").html("<b>Signing Up...</b>");
         user.signUp(null, {
             success:function(user) {
                 currentUser = user;

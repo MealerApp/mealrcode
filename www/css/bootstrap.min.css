@@ -135,3 +135,14 @@ p {
 .nav_btn {
 	padding: 20px;
 }
+.login_screen {
+	 width: 100%; 
+	 border: 3px solid #6BA9FE; 
+	 margin-bottom: 10px; 
+}
+.login_page {
+	font-size: 24px;
+}
+#checkbox p {
+	font-size: 8px;
+}

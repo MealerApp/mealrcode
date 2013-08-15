@@ -39,9 +39,23 @@
             app.initialize();
         </script>
         <script type="text/javascript" charset="utf-8">
+
+        $(document).ready(function() {
+      var PARSE_APP = "HuzsO7v7OkSX4lsdBvUDnao4IwLPOwgHmcl38d3a";
+      var PARSE_JS = "KPzkymEo5O2hnxafmb51JjZkF7HamJLxDdMQnupq";
+      Parse.initialize(PARSE_APP, PARSE_JS);
+      
+      currentUser = Parse.User.current();
+      if(!currentUser) {
+        window.location.assign("login.html");
+        console.log("PIE");
+      }
+
+      checkConnection();
+      console.log("About to check connection")
+    });
          var PARSE_APP = "HuzsO7v7OkSX4lsdBvUDnao4IwLPOwgHmcl38d3a";
          var PARSE_JS = "KPzkymEo5O2hnxafmb51JjZkF7HamJLxDdMQnupq";
-              Parse.initialize(PARSE_APP, PARSE_JS);
     // // Wait for device API libraries to load
     // //
     // document.addEventListener("deviceready", onDeviceReady, false);
@@ -53,10 +67,6 @@
     // function onDeviceReady() {
     //   
     // }
-
-        document.addEventListener("offline", function(){ alert("You're offline") }, false);
-
-        document.addEventListener("online", function(){ alert("You're online") }, false);
 
 
     // Show a custom alertDismissed
@@ -114,20 +124,20 @@
           <li>
           <p class="navbar-text"><script type="text/javascript">    
 
-              //     var PARSE_APP = "HuzsO7v7OkSX4lsdBvUDnao4IwLPOwgHmcl38d3a";
-              //     var PARSE_JS = "KPzkymEo5O2hnxafmb51JjZkF7HamJLxDdMQnupq";
-              //     Parse.initialize(PARSE_APP, PARSE_JS);
+                  var PARSE_APP = "HuzsO7v7OkSX4lsdBvUDnao4IwLPOwgHmcl38d3a";
+                  var PARSE_JS = "KPzkymEo5O2hnxafmb51JjZkF7HamJLxDdMQnupq";
+                  Parse.initialize(PARSE_APP, PARSE_JS);
 
-              //       var username = $("#username").val();
-              //       var password = $("#password").val();
-              //       var email = $("#email").val();
+                    var username = $("#username").val();
+                    var password = $("#password").val();
+                    var email = $("#email").val();
 
-              //       currentUser = Parse.User.current();
+                    currentUser = Parse.User.current();
 
-              // document.write("Signed in as " + currentUser.username)
+              document.write("Signed in as " + currentUser.username)
 
           </script></p>
-          <button type="button" class="btn btn-default navbar-btn">Log Out</button></li>
+          <button onclick="location.href='login.html'" type="button" class="btn btn-default navbar-btn">Log Out</button></li>
         </ul>
      </div>
   </div>
@@ -210,20 +220,7 @@ function submitPost() {
     // document.addEventListener("deviceready", onDeviceReady, false)
     // device APIs are available
     //
-$(document).ready(function() {
-      var PARSE_APP = "HuzsO7v7OkSX4lsdBvUDnao4IwLPOwgHmcl38d3a";
-      var PARSE_JS = "KPzkymEo5O2hnxafmb51JjZkF7HamJLxDdMQnupq";
-      Parse.initialize(PARSE_APP, PARSE_JS);
-      
-      currentUser = Parse.User.current();
-      if(!currentUser) {
-        window.location.assign("login.html");
-        console.log("PIE");
-      }
 
-      checkConnection();
-      console.log("About to check connection")
-    });
 
         function checkConnection() {
             var networkState = navigator.connection;
@@ -244,6 +241,21 @@ $(document).ready(function() {
         }
 
         checkConnection();
+
+    </script>
+    
+    <script>
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.open("GET","cd_AndroidManifest.xml",false);
+xmlhttp.send();
+xmlDoc=xmlhttp.responseXML; 
     </script>
   </body>
 </html>

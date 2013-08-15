@@ -217,8 +217,13 @@ $(document).ready(function() {
       
       currentUser = Parse.User.current();
       if(!currentUser) {
+<<<<<<< HEAD
         window.location.assign("login.html");
         console.log("PIE");
+=======
+        // do an alert here to see if logged in
+        window.location = "login.html";
+>>>>>>> 52921e101fe7d77bd54ee634818c33c6a2738b9d
       }
 
       checkConnection();

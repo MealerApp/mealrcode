@@ -1,15 +1,42 @@
-<!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
+<form onsubmit="return checkCheckBoxes(this);" class="form-horizontal span12" id="registerForm" >
+  <div class="control-group">
+    <label class="control-label" for="username">Username</label>
+    <div class="controls">
+      <input type="text" id="username" placeholder="Username">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="email">Email</label>
+    <div class="controls">
+      <input type="text" id="email" placeholder="Email">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="password">Password</label>
+    <div class="controls">
+      <input type="password" id="password" placeholder="Password">
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+       <label class="checkbox">
+         <input type="CHECKBOX" name="termsCheckbox" id="checkbox" placeholder="Checkbox"> I Accept the Terms and Conditions
+      </label>
+      <span id="regstatus"></span>
+      <button type="submit" class="btn">Register</button>
+    </div>
+  </div>
+</form>
 
-    http://www.apache.org/licenses/LICENSE-2.0
+<script type="text/javascript"> 
+  $('#registerForm').submit(function(e) {
+      var PARSE_APP = "HuzsO7v7OkSX4lsdBvUDnao4IwLPOwgHmcl38d3a";
+      var PARSE_JS = "KPzkymEo5O2hnxafmb51JjZkF7HamJLxDdMQnupq";
+      Parse.initialize(PARSE_APP, PARSE_JS);
+    
+      e.preventDefault();
 
+<<<<<<< HEAD
     Unless required by applicable law or agreed to in writing,
     software distributed under the License is distributed on an
     "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -133,6 +160,46 @@
             }
         });
     });
+=======
+      $("#regstatus").html("").removeClass("errorDiv");
+
+      //get values
+      var username = $("#username").val();
+      var password = $("#password").val();
+      var email = $("#email").val();
+      var checkbox = $("#checkbox").val();
+      //do some basic validation here
+      var errors = "";
+      if(username === "") errors += "Username required.<br/>";
+      if(password === "") errors += "Password required.<br/>";
+      if(email === "") errors += "Email required.<br/>";
+      if(checkbox === "") errors += "You forgot to agree to terms and conditions.<br/>";
+      // ANEAR: here is where you could also validate that the checkbox for terms and conditions is checked
+    
+      if(errors !== "") {
+          $("#regstatus").html(errors).addClass("errorDiv");
+          return;
+      }
+      //try to register with Parse and see if it works.
+      var user = new Parse.User();
+      user.set("username", username);
+      user.set("password", password);
+      user.set("email", email);
+
+      $("#regstatus").html("<b>Registering user...</b>");
+      user.signUp(null, {
+          success:function(user) {
+              currentUser = user;
+              $('#mainOutlet').load('feed_partials.html')
+          },
+          error:function(user, error) {
+              console.log("ERROR!");
+              console.dir(error);
+              $("#regstatus").html(error.message).addClass("errorDiv");
+          }
+      });
+  });
+>>>>>>> 6bec54f5aba4bb307e42cc43c3f2c3646c7cb850
   </script>
   <script type="text/javascript" language="JavaScript">
 <!--
@@ -148,6 +215,4 @@ function checkCheckBoxes(theForm) {
     }
 }
 //-->
-</script> 
-</body>
-</html>    
+</script>    

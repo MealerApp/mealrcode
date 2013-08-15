@@ -94,7 +94,7 @@
   </head>
 
 <body>    
-<div class="navbar navbar-fixed-top">
+<div id='navbar' class="navbar navbar-fixed-top">
   <div class="container">
     <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
     <button style="padding: 10px; background-color:#6BA9FE;" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
@@ -135,45 +135,10 @@
 
 <div class="container">
     <div class='row'>
-        <div class='span12'>
-            <a href="#" onclick="takePicture();" class="btn btn-lg btn-success nav_btn"><i class='icon icon-camera'></i>Take Photo</a>
-            <img style="width:6.75em; height:6.75em; image-orientation: 90deg; " src="" id="myImage"></img>
-        </div>
-    </div>
-    <input id='postText' type="text" placeholder="Update your status!"><a href="#" class='btn btn-lg btn-primary submit nav_btn' onclick="submitPost();">Submit</a>
-    <a href="#" class="btn btn-lg btn-primary nav_btn" onclick="checkConnection();">Check Connection</a>
-    <div class="row">
-        <div class="well span12">
-            <div class='row'>
-                <img class="default_pic" src="img/anear.png"><a href="#" class=" span2">Anear Nahar</a>
-                <p class="status_text">Today's workout was amazing! Met some of my old friends along the way too :)
-                </p>
-                <div class="like"><a href="#" class="btn footer">Pat</a>
-                <a href="#" class="btn footer">Challenge</a></div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="well span12">
-            <div class='row'>
-                <img class="default_pic" src="img/anear.png"><a href="#" class=" span2">Twasif Mohammed</a>
-                <p class="status_text">Twasif just won his first badge! Give him a pat on the back</p>
-                <img src="img/first_badge.png">
-                <div class="like"><a href="#" class="btn footer">Pat</a>
-                <a href="#" class="btn footer">Challenge</a></div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="well span12">
-            <div class='row'>
-                <img class="default_pic" src="img/anear.png"><a href="#" class=" span2">Rajesh Batman</a>
-                <p class="status_text">Just had lunch! This fruit was awesome (GO FRUIT)</p>
-                <img class="status_images" src="img/lunch.jpg"><br>
-                <div class="like"><a href="#" class="btn footer">Pat</a>
-                <a href="#" class="btn footer">Challenge</a></div>
-            </div>
-        </div>
+        <div class='span12' id='mainOutlet'>
+          
+        <!-- This is where our application lives -->
+        </div>   
     </div>
 </div>
 
@@ -210,45 +175,24 @@ function submitPost() {
     // document.addEventListener("deviceready", onDeviceReady, false)
     // device APIs are available
     //
-$(document).ready(function() {
+    $(document).ready(function() {
       var PARSE_APP = "HuzsO7v7OkSX4lsdBvUDnao4IwLPOwgHmcl38d3a";
       var PARSE_JS = "KPzkymEo5O2hnxafmb51JjZkF7HamJLxDdMQnupq";
       Parse.initialize(PARSE_APP, PARSE_JS);
-      
+  
       currentUser = Parse.User.current();
       if(!currentUser) {
-<<<<<<< HEAD
-        window.location.assign("login.html");
-        console.log("PIE");
-=======
-        // do an alert here to see if logged in
-        window.location = "login.html";
->>>>>>> 52921e101fe7d77bd54ee634818c33c6a2738b9d
-      }
+        $('#mainOutlet').load('login.html');
+        $('#navbar').hide();
+        // window.location.assign("login.html");
 
-      checkConnection();
-      console.log("About to check connection")
+      }
+      else{
+        $('#mainOutlet').load('feed_partials.html');
+      }    
     });
 
-        function checkConnection() {
-            var networkState = navigator.network.connection.type;
 
-            var states = {};
-            states[Connection.UNKNOWN]  = 'Unknown connection';
-            states[Connection.ETHERNET] = 'Ethernet connection';
-            states[Connection.WIFI]     = 'WiFi connection';
-            states[Connection.CELL_2G]  = 'Cell 2G connection';
-            states[Connection.CELL_3G]  = 'Cell 3G connection';
-            states[Connection.CELL_4G]  = 'Cell 4G connection';
-            states[Connection.CELL]     = 'Cell generic connection';
-            states[Connection.NONE]     = 'No network connection';
-
-            //alert('Connection type: ' + states[networkState]);
-            console.log("ALERT SHOULD RUN");
-
-        }
-
-        checkConnection();
     </script>
   </body>
 </html>

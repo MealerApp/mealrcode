@@ -7,16 +7,6 @@
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Apache Cordova Team
     </author>
-<<<<<<< HEAD
-    <content src="index.html" />
-    <feature name="App">
-        <param name="android-package" value="org.apache.cordova.App" />
-    </feature>
-    <feature name="Camera">
-        <param name="android-package" value="org.apache.cordova.core.CameraLauncher" />
-    </feature>
-    <access origin="http://127.0.0.1*" />
-=======
     <feature name="http://api.phonegap.com/1.0/device" />
     <feature name="http://api.phonegap.com/1.0/file" />
     <plugin name="Camera" value="org.apache.cordova.CameraLauncher" />
@@ -47,7 +37,6 @@
     <gap:splash gap:platform="ios" height="768" src="res/screen/ios/screen-ipad-landscape.png" width="1024" />
     <gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen-portrait.jpg" />
     <access origin="*" />
->>>>>>> 6bec54f5aba4bb307e42cc43c3f2c3646c7cb850
     <preference name="useBrowserHistory" value="true" />
     <preference name="exit-on-suspend" value="false" />
     <preference name="permissions" value="none" />

@@ -102,9 +102,7 @@
 <!-- POST -->
 <script type="text/javascript">
 function submitPost() {
-      var Post = Parse.Object.extend("Post");
-      console.log('device ready');
-          
+      var Post = Parse.Object.extend("Post");          
       var post = new Post();
       var text = $('#postText').val();
       post.set("text", text);

@@ -20,7 +20,7 @@
       <a onclick="$('#mainOutlet').load('register.html');" class="btn btn-success">Sign Up Here</a></div>
   </div>
 </form>
-
+<div id='loginstatus'></div>
 <script>
     $('#signInForm').submit(function(e) {
         e.preventDefault();
@@ -51,7 +51,7 @@
             error:function(user, error) {
                 console.log("ERROR!");
                 console.dir(error);
-                $("#loginstatus").html(error.message).addClass("errorDiv");
+                $("#loginstatus").html(error.message);
             }
         });
     });

@@ -128,15 +128,15 @@ function submitPost() {
   document.addEventListener("deviceready", onDeviceReady, false);
 
     function onDeviceReady() {
-    // Now safe to use the PhoneGap API
-      var PARSE_APP = "HuzsO7v7OkSX4lsdBvUDnao4IwLPOwgHmcl38d3a";
-      var PARSE_JS = "KPzkymEo5O2hnxafmb51JjZkF7HamJLxDdMQnupq";
-      Parse.initialize(PARSE_APP, PARSE_JS);
-      console.log('odr');
+      eitherReady();
     }
   
     $(document).ready(function() {
       console.log('doc ready');
+      eitherReady();
+    });
+    
+    function eitherReady() {
       var PARSE_APP = "HuzsO7v7OkSX4lsdBvUDnao4IwLPOwgHmcl38d3a";
       var PARSE_JS = "KPzkymEo5O2hnxafmb51JjZkF7HamJLxDdMQnupq";
       console.log(Parse.initialize(PARSE_APP, PARSE_JS));
@@ -147,11 +147,9 @@ function submitPost() {
       }
       else{
         $('#mainOutlet').load('login.html');
+      }  
+        
       }
-      
-  
-      
-    });
   </script>
   </body>
 </html>

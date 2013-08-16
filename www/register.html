@@ -2,19 +2,19 @@
   <div class="control-group">
     <label class="control-label" for="username">Username</label>
     <div class="controls">
-      <input type="text" id="username" placeholder="Username">
+      <input class="login_screen" type="text" id="username" placeholder="Username">
     </div>
   </div>
   <div class="control-group">
     <label class="control-label" for="email">Email</label>
     <div class="controls">
-      <input type="text" id="email" placeholder="Email">
+      <input class="login_screen" type="text" id="email" placeholder="Email">
     </div>
   </div>
   <div class="control-group">
     <label class="control-label" for="password">Password</label>
     <div class="controls">
-      <input type="password" id="password" placeholder="Password">
+      <input class="login_screen" type="password" id="password" placeholder="Password">
     </div>
   </div>
   <div class="control-group">
@@ -23,7 +23,7 @@
          <input type="CHECKBOX" name="termsCheckbox" id="checkbox" placeholder="Checkbox"> I Accept the Terms and Conditions
       </label>
       <span id="regstatus"></span>
-      <button type="submit" class="btn">Register</button>
+      <button type="submit" class="btn btn-lg btn-success">Register</button>
     </div>
   </div>
 </form>
@@ -65,7 +65,7 @@
       user.signUp(null, {
           success:function(user) {
               currentUser = user;
-              $('#mainOutlet').load('feed_partials.html')
+              $('#mainOutlet').load('feed.html')
           },
           error:function(user, error) {
               console.log("ERROR!");

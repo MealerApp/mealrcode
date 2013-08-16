@@ -77,14 +77,8 @@
           <li class="badges"><a href="badges.html">My Badges</a></li>
           <li class="options"><a href="options.html">Options</a></li>
           <li>
-          <p class="navbar-text"><script type="text/javascript">  
-
-                //     var currentUser = Parse.User.current();
-                // 
-                // document.write("Signed in as " + currentUser.email)
-  
-          </script></p>
-          <button onclick="location.href='login.html'" type="button" class="btn btn-default navbar-btn">Log Out</button></li>
+          <p class="navbar-text" id='signedIn'></p>
+          <button onclick="logOut();" type="button" class="btn btn-default navbar-btn">Log Out</button></li>
         </ul>
      </div>
   </div>
@@ -101,7 +95,14 @@
 
 <!-- POST -->
 <script type="text/javascript">
-function submitPost() {
+  function logOut() {
+    Parse.User.logOut();
+    $('#navbar').hide();
+    $('#mainOutlet').load('login.html');
+  }
+
+
+  function submitPost() {
       var Post = Parse.Object.extend("Post");          
       var post = new Post();
       var text = $('#postText').val();
@@ -145,6 +146,7 @@ function submitPost() {
       }
       else{
         $('#mainOutlet').load('login.html');
+        $('#navbar').hide();
       }  
         
       }

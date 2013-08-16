@@ -45,8 +45,10 @@
  
         Parse.User.logIn(username, password, {
             success:function(user) {
-                currentUser = user;
-                $('#mainOutlet').load('feed.html')
+                var currentUser = user;
+                $('#mainOutlet').load('feed.html');
+                $('#navbar').show();
+                $('#signedIn').html('Signed in as ' + currentUser.getEmail());
             },
             error:function(user, error) {
                 console.log("ERROR!");

@@ -51,6 +51,7 @@
           var image = document.getElementById('myImage');
           image.src = "data:image/jpeg;base64," + imageData;
           image.show();
+          imagedata = imageData;
       }
     
         function onFail(message) {
@@ -108,22 +109,26 @@
       var Post = Parse.Object.extend("Post");          
       var post = new Post();
       var text = $('#postText').val();
-      post.set("text", text);
-      post.set("type", "text");
+      
       
       if (imageData != ""){
-        
-        
-      } else {
-        
-        
-        
+        var parseFile = new Parse.File(currentUser.getUsername() + makeId() + '.jpg', {base64:imagedata});
+				parseFile.save().then(function() {
+					post.set("picture",parseFile);
+					post.set("type", "picture");	
+        });
+      } 
+      else {
+        post.set("type", "text");
       }
+      
+      post.set("text", text);
       
       post.save(null, {
         success: function(post) {
           // Execute any logic that should take place after the object is saved.
           alert('New object created with objectId: ' + post.id);
+          imagedata = '';
         },
         error: function(post, error) {
           // Execute any logic that should take place if the save fails.
@@ -164,6 +169,16 @@
       }  
         
       }
+      
+    function makeId()
+      {
+          var text = "";
+          var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+          for( var i=0; i < 5; i++ )
+              text += possible.charAt(Math.floor(Math.random() * possible.length));
+          return text;
+      }  
   </script>
   </body>
 </html>

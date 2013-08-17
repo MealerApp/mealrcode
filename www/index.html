@@ -24,6 +24,7 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <title>Home Screen</title>
         <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
         <script src="js/parse.js"></script>      
         <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -111,8 +112,8 @@
       var text = $('#postText').val();
       
       
-      if (imageData != ""){
-        var parseFile = new Parse.File(currentUser.getUsername() + makeId() + '.jpg', {base64:imagedata});
+      if (imagedata != ""){
+        var parseFile = new Parse.File('picture.jpg', {base64:imagedata});
 				parseFile.save().then(function() {
 					post.set("picture",parseFile);
 					post.set("type", "picture");	

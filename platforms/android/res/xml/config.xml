@@ -39,10 +39,9 @@
     <feature name="Camera">
         <param name="android-package" value="org.apache.cordova.core.CameraLauncher" />
     </feature>
-    <access origin="http://127.0.0.1*" />
+    <access origin="*" />
     <preference name="useBrowserHistory" value="true" />
     <preference name="exit-on-suspend" value="false" />
-    <preference name="permissions" value="none" />
     <preference name="phonegap-version" value="2.9.0" />
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />

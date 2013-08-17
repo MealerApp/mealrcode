@@ -151,6 +151,7 @@ p {
 #myImage {
 	width:8.75em; 
 	height:8.75em; 
+	display: none;
 	image-orientation: -90deg; 
 }
 .row {

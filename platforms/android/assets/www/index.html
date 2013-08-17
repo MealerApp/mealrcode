@@ -51,6 +51,7 @@
           var image = document.getElementById('myImage');
           image.src = "data:image/jpeg;base64," + imageData;
           image.show();
+          imagedata = imageData;
       }
     
         function onFail(message) {
@@ -102,19 +103,46 @@
     $('#navbar').hide();
     $('#mainOutlet').load('login.html');
   }
+  
+  function getPosts(currentUser) {
+    var query = new Parse.Query("Post");
+    query.find({
+      success: function(results) {
+        console.log(results);
+        var allPosts = results;
+        // results is an array of Parse.Object.
+      },
+      error: function(error) {
+        // error is an instance of Parse.Error.
+      }
+    });
+  }
 
 
   function submitPost() {
       var Post = Parse.Object.extend("Post");          
       var post = new Post();
       var text = $('#postText').val();
+      
+      
+      if (imageData != ""){
+        var parseFile = new Parse.File('picture.jpg', {base64:imageData});
+				parseFile.save().then(function() {
+					post.set("picture",parseFile);
+					post.set("type", "picture");	
+        });
+      } 
+      else {
+        post.set("type", "text");
+      }
+      
       post.set("text", text);
-      post.set("type", "text");
-    
+      
       post.save(null, {
         success: function(post) {
           // Execute any logic that should take place after the object is saved.
-          alert('New object created with objectId: ' + post.id);
+          alert('New object created with objectId: ' + post.id + post.type);
+          imagedata = '';
         },
         error: function(post, error) {
           // Execute any logic that should take place if the save fails.
@@ -143,9 +171,12 @@
       var PARSE_JS = "KPzkymEo5O2hnxafmb51JjZkF7HamJLxDdMQnupq";
       console.log(Parse.initialize(PARSE_APP, PARSE_JS));
       
+      var imagedata = "";
+      
       var currentUser = Parse.User.current()
       if (currentUser){
         $('#mainOutlet').load('feed.html');
+        getPosts(currentUser);
       }
       else{
         $('#mainOutlet').load('login.html');
@@ -153,6 +184,16 @@
       }  
         
       }
+      
+    function makeId()
+      {
+          var text = "";
+          var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+          for( var i=0; i < 5; i++ )
+              text += possible.charAt(Math.floor(Math.random() * possible.length));
+          return text;
+      }  
   </script>
   </body>
 </html>

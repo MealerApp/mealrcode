@@ -103,6 +103,20 @@
     $('#navbar').hide();
     $('#mainOutlet').load('login.html');
   }
+  
+  function getPosts(currentUser) {
+    var query = new Parse.Query("Post");
+    query.find({
+      success: function(results) {
+        console.log(results);
+        var allPosts = results;
+        // results is an array of Parse.Object.
+      },
+      error: function(error) {
+        // error is an instance of Parse.Error.
+      }
+    });
+  }
 
 
   function submitPost() {
@@ -112,7 +126,7 @@
       
       
       if (imageData != ""){
-        var parseFile = new Parse.File(currentUser.getUsername() + makeId() + '.jpg', {base64:imagedata});
+        var parseFile = new Parse.File('picture.jpg', {base64:imageData});
 				parseFile.save().then(function() {
 					post.set("picture",parseFile);
 					post.set("type", "picture");	
@@ -127,7 +141,7 @@
       post.save(null, {
         success: function(post) {
           // Execute any logic that should take place after the object is saved.
-          alert('New object created with objectId: ' + post.id);
+          alert('New object created with objectId: ' + post.id + post.type);
           imagedata = '';
         },
         error: function(post, error) {
@@ -162,6 +176,7 @@
       var currentUser = Parse.User.current()
       if (currentUser){
         $('#mainOutlet').load('feed.html');
+        getPosts(currentUser);
       }
       else{
         $('#mainOutlet').load('login.html');

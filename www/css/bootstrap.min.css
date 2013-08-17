@@ -157,3 +157,11 @@ p {
 .row {
 	width: 100%;
 }
+.tracker_table {
+	 border:5; 
+	 border-color:#4fb69f; 
+	 background-color:#faf3bc;
+	 width: 100%;
+	 cellpadding: 3;
+     cellspacing: 10;
+}

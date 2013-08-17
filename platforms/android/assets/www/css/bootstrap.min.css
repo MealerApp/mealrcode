@@ -10,9 +10,9 @@
 /*Cream(#758FC2)
 tan(#FFE0C1)
 burnt orange(#36B0FF)*/
- ul.nav  {
- 	margin-top: 30px;
- }
+.nav li {
+	margin-top: 30px;
+}
  .nav-title {
  	margin-top: 30px;
  }
@@ -87,7 +87,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', end
  	font-size: 1.7em;
  }
 .water_glass {
-	margin-left: 50%;
+	margin-left: 20%;
 }
 .peanuts {
 	margin-left: 25%;

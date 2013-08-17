@@ -10,9 +10,9 @@
 /*Cream(#758FC2)
 tan(#FFE0C1)
 burnt orange(#36B0FF)*/
- ul.li  {
- 	margin-top: 30px;
- }
+.nav li {
+	margin-top: 30px;
+}
  .nav-title {
  	margin-top: 30px;
  }

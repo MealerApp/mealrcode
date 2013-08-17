@@ -32,6 +32,8 @@
         <script src="http://code.jquery.com/jquery.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="js/bootstrap.js"></script>
+        <script src='kiipPlugin.js'></script>
+        
         <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
         <!--<script src="js/respond.js"></script> -->
         <script type="text/javascript" src="phonegap.js"></script>
@@ -74,7 +76,7 @@
       <span class="icon-bar"></span>
     </button>
 
-    <a class="navbar-brand nav-title" href="index.html">Mealr</a>
+    <a class="navbar-brand nav-title" href="#" onclick='getPosts();'>Mealr</a>
     <div class="nav-collapse collapse navbar-responsive-collapse">
         <ul class="nav navbar-nav">
           <li class="profile"><a href="#" onclick="$('#mainOutlet').load('profile.html');">Profile</a></li>
@@ -94,6 +96,9 @@
         <div class='span12' id='mainOutlet'>
           
         <!-- This is where our application lives -->
+        
+          
+        
         </div>   
     </div>
 </div>
@@ -107,11 +112,26 @@
   }
   
   function getPosts(currentUser) {
+    $('#mainOutlet').load('feed.html');
     var query = new Parse.Query("Post");
     query.find({
       success: function(results) {
-        console.log(results);
         var allPosts = results;
+        allPosts.map( function(item, index) {
+          if(item.attributes.type == 'text'){
+             $.get("post_partials/text_post.html", function (data) {
+               $('#mainOutlet').append(data);
+               $('.status_text').eq(index).text(item.attributes.text);
+               $('.timestamp').eq(index).text(item.createdAt);
+             })
+           }
+          else if(item.attributes.type == 'picture'){
+            alert('photo');
+              // TODO: Insert photo from parse into DOM
+              
+              // TODO: Add badge type
+          }
+      })
         // results is an array of Parse.Object.
       },
       error: function(error) {
@@ -145,6 +165,7 @@
           // Execute any logic that should take place after the object is saved.
           alert('New object created with objectId: ' + post.id + post.type);
           imagedata = '';
+          // TODO: now reload the posts again to get the new one to show
         },
         error: function(post, error) {
           // Execute any logic that should take place if the save fails.
@@ -158,7 +179,13 @@
 
   <script type="text/javascript" charset="utf-8">
   document.addEventListener("deviceready", onDeviceReady, false);
-
+  document.addEventListener("resume", onResume, false);
+  
+  
+    function onResume(){
+      //kiip.startSession();
+    }
+    
     function onDeviceReady() {
       eitherReady();
     }
@@ -171,7 +198,9 @@
     function eitherReady() {
       var PARSE_APP = "HuzsO7v7OkSX4lsdBvUDnao4IwLPOwgHmcl38d3a";
       var PARSE_JS = "KPzkymEo5O2hnxafmb51JjZkF7HamJLxDdMQnupq";
-      console.log(Parse.initialize(PARSE_APP, PARSE_JS));
+      Parse.initialize(PARSE_APP, PARSE_JS);
+      
+      // kiip.init('fdad86017da03535b86f7d622b0d27db', '4d0ec4da394aab8d697ad23c54107b0f', kiipSuccessCallback, kiipFailureCallback);
       
       var imagedata = "";
       
@@ -186,6 +215,15 @@
       }  
         
       }
+      
+    function kiipSuccessCallback(){
+      console.log('kiip success');
+    }
+    
+    function kiipFailureCallback(){
+      console.log('kiip failure');
+    }
+      
       
     function makeId()
       {

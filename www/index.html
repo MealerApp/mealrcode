@@ -107,6 +107,7 @@
       var post = new Post();
       var text = $('#postText').val();
       post.set("text", text);
+      post.set("type", "text");
     
       post.save(null, {
         success: function(post) {

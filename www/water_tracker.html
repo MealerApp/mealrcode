@@ -22,6 +22,11 @@
 </table> -->
 <div class="water_glass"><img src="img/glass.png" width='80%'></div>
 <div class="water_content">
-<h2 class="glass_count">0/8</h2>
+<h2 class="glass_count"><span id='count'></span>/8</h2>
 <h1>Glasses Today</h1>
 </div>
+<script>
+  // Parse.User.current().fetch();
+  var currentCount = Parse.User.current().get('water_count');
+  $('#count').html(currentCount);
+</script>

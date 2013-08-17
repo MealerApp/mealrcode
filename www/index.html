@@ -108,7 +108,16 @@
       var text = $('#postText').val();
       post.set("text", text);
       post.set("type", "text");
-    
+      
+      if (imageData != ""){
+        
+        
+      } else {
+        
+        
+        
+      }
+      
       post.save(null, {
         success: function(post) {
           // Execute any logic that should take place after the object is saved.
@@ -140,6 +149,8 @@
       var PARSE_APP = "HuzsO7v7OkSX4lsdBvUDnao4IwLPOwgHmcl38d3a";
       var PARSE_JS = "KPzkymEo5O2hnxafmb51JjZkF7HamJLxDdMQnupq";
       console.log(Parse.initialize(PARSE_APP, PARSE_JS));
+      
+      var imagedata = "";
       
       var currentUser = Parse.User.current()
       if (currentUser){

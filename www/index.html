@@ -65,7 +65,8 @@
     </script>
   </head>
 
-<body>    
+<body>
+
 <div id='navbar' class="navbar navbar-fixed-top">
   <div class="container">
     <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
@@ -105,13 +106,19 @@
 
 <!-- POST -->
 <script type="text/javascript">
-  function logOut() {
+
+  // function hideNavbar() {
+  //   $('#navbar').collapse('#navbar');
+  // }
+
+
+    function logOut() {
     Parse.User.logOut();
     $('#navbar').hide();
     $('#mainOutlet').load('login.html');
-  }
-  
-  function getPosts(currentUser) {
+  };
+
+ var getposts = function getPosts(currentUser) {
     $('#mainOutlet').load('feed.html');
     var query = new Parse.Query("Post");
     query.find({
@@ -119,26 +126,29 @@
         var allPosts = results;
         allPosts.map( function(item, index) {
           if(item.attributes.type == 'text'){
-             $.get("post_partials/text_post.html", function (data) {
+             $.get("text_post.html", function (data) {
                $('#mainOutlet').append(data);
                $('.status_text').eq(index).text(item.attributes.text);
                $('.timestamp').eq(index).text(item.createdAt);
              })
            }
-          else if(item.attributes.type == 'picture'){
-            alert('photo');
+          // else if (item.attributes.type == 'picture') {
+          //    $.get("picture_post.html", function (data) {
+          //      $('#mainOutlet').append(data);
+          //      $('.status_text').eq(index).text(item.attributes.text);
+          //      $('.timestamp').eq(index).text(item.createdAt);
               // TODO: Insert photo from parse into DOM
               
               // TODO: Add badge type
-          }
-      })
+              }
+      )
         // results is an array of Parse.Object.
-      },
+      };
       error: function(error) {
         // error is an instance of Parse.Error.
       }
     });
-  }
+  }})};
 
 
   function submitPost() {

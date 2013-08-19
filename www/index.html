@@ -116,9 +116,9 @@
     Parse.User.logOut();
     $('#navbar').hide();
     $('#mainOutlet').load('login.html');
-  };
+  }
 
-  var function getPosts(currentUser) {
+  function getPosts(currentUser) {
     $('#mainOutlet').load('feed.html');
     var query = new Parse.Query("Post");
     query.find({
@@ -126,29 +126,27 @@
         var allPosts = results;
         allPosts.map( function(item, index) {
           if(item.attributes.type == 'text'){
-           $.get("text_post.html", function (data) {
-             $('#mainOutlet').append(data);
-             $('.status_text').eq(index).text(item.attributes.text);
-             $('.timestamp').eq(index).text(item.createdAt);
-           })
+            $.get("post_partials/text_post.html", function (data) {
+              $('#mainOutlet').append(data);
+              $('.status_text').eq(index).text(item.attributes.text);
+              $('.timestamp').eq(index).text(item.createdAt);
+            })
          }
-          // else if (item.attributes.type == 'picture') {
-          //    $.get("picture_post.html", function (data) {
-          //      $('#mainOutlet').append(data);
-          //      $('.status_text').eq(index).text(item.attributes.text);
-          //      $('.timestamp').eq(index).text(item.createdAt);
-              // TODO: Insert photo from parse into DOM
-              
-              // TODO: Add badge type
-            }
-            )
-        // results is an array of Parse.Object.
-      };
+          else if (item.attributes.type == 'picture') {
+            $.get("post_partials/picture_post.html", function (data) {
+              $('#mainOutlet').append(data);
+              $('.status_text').eq(index).text(item.attributes.text);
+              $('.timestamp').eq(index).text(item.createdAt);
+            })
+          }
+        })
+      },  
+      
       error: function(error) {
         // error is an instance of Parse.Error.
       }
     });
-}})};
+  }
 
 
 function submitPost() {
@@ -203,7 +201,7 @@ function onResume(){
     $(document).ready(function() {
       console.log('doc ready');
       eitherReady();
-    });
+    })
     
     function eitherReady() {
       var PARSE_APP = "HuzsO7v7OkSX4lsdBvUDnao4IwLPOwgHmcl38d3a";

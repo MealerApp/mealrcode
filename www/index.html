@@ -16,109 +16,109 @@
      KIND, either express or implied.  See the License for the
     specific language governing permissions and limitations
     under the License.
--->
-<html>
+  -->
+  <html>
   <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <title>Home Screen</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-        <script src="js/parse.js"></script>      
-        <script type="text/javascript" src="js/jquery.min.js"></script>
-                <!-- JavaScript plugins (requires jQuery) -->
-        <script src="http://code.jquery.com/jquery.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="js/bootstrap.js"></script>
-        <script src='kiipPlugin.js'></script>
-        
-        <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-        <!--<script src="js/respond.js"></script> -->
-        <script type="text/javascript" src="phonegap.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-     <!--    // <script type="text/javascript" src="js/cordova.js"></script>  -->
-        <script type="text/javascript">
-            app.initialize();
-        </script>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <title>Home Screen</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <script src="js/parse.js"></script>      
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <!-- JavaScript plugins (requires jQuery) -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.js"></script>
+    <script src='kiipPlugin.js'></script>
+    
+    <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+    <!--<script src="js/respond.js"></script> -->
+    <script type="text/javascript" src="phonegap.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <!--    // <script type="text/javascript" src="js/cordova.js"></script>  -->
+    <script type="text/javascript">
+    app.initialize();
+    </script>
     <script type="text/javascript" charset="utf-8">
 
-      function takePicture() {
-        navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
-            destinationType: Camera.DestinationType.DATA_URL,
-			      sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
-        });
-    
-    
+    function takePicture() {
+      navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+        destinationType: Camera.DestinationType.DATA_URL,
+        sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+      });
+      
+      
       function onSuccess(imageData) {
-          var image = document.getElementById('myImage');
-          image.src = "data:image/jpeg;base64," + imageData;
-          image.show();
-          imagedata = imageData;
+        var image = document.getElementById('myImage');
+        image.src = "data:image/jpeg;base64," + imageData;
+        image.show();
+        imagedata = imageData;
       }
-    
-        function onFail(message) {
-            alert('Failed because: ' + message);
-        }
+      
+      function onFail(message) {
+        alert('Failed because: ' + message);
+      }
     }
     </script>
   </head>
 
-<body>
+  <body>
 
-<div id='navbar' class="navbar navbar-fixed-top">
-  <div class="container">
-    <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
-    <button style="padding: 10px;" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
+    <div id='navbar' class="navbar navbar-fixed-top">
+      <div class="container">
+        <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
+        <button style="padding: 10px;" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
 
-    <a class="navbar-brand nav-title" href="#" onclick='getPosts();'>Mealr</a>
-    <div class="nav-collapse collapse navbar-responsive-collapse">
-        <ul class="nav navbar-nav">
-          <li class="profile"><a href="#" onclick="$('#mainOutlet').load('profile.html');">Profile</a></li>
-          <li class="tracker"><a href="#" onclick="$('#mainOutlet').load('the_tracker.html');">Trackers</a></li>
-          <li class="badges"><a href="#" onclick="$('#mainOutlet').load('badges.html');">My Badges</a></li>
-          <li class="options"><a href="#" onclick="$('#mainOutlet').load('options.html');">Options</a></li>
-          <li>
-          <p class="navbar-text" id='signedIn'></p>
-          <button onclick="logOut();" type="button" class="btn btn-default navbar-btn">Log Out</button></li>
-        </ul>
-     </div>
-  </div>
-</div>
+        <a class="navbar-brand nav-title" href="#" onclick='getPosts();'>Mealr</a>
+        <div class="nav-collapse collapse navbar-responsive-collapse">
+          <ul class="nav navbar-nav">
+            <li class="profile"><a href="#" onclick="$('#mainOutlet').load('profile.html');">Profile</a></li>
+            <li class="tracker"><a href="#" onclick="$('#mainOutlet').load('the_tracker.html');">Trackers</a></li>
+            <li class="badges"><a href="#" onclick="$('#mainOutlet').load('badges.html');">My Badges</a></li>
+            <li class="options"><a href="#" onclick="$('#mainOutlet').load('options.html');">Options</a></li>
+            <li>
+              <p class="navbar-text" id='signedIn'></p>
+              <button onclick="logOut();" type="button" class="btn btn-default navbar-btn">Log Out</button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-<div class="container">
-    <div class='row'>
-        <div class='span12' id='mainOutlet'>
-          
-        <!-- This is where our application lives -->
-        
-          
-        
-        </div>   
-    </div>
-</div>
+      <div class="container">
+        <div class='row'>
+          <div class='span12' id='mainOutlet'>
+            
+            <!-- This is where our application lives -->
+            
+            
+            
+          </div>   
+        </div>
+      </div>
 
-<!-- POST -->
-<script type="text/javascript">
+      <!-- POST -->
+      <script type="text/javascript">
 
   // function hideNavbar() {
   //   $('#navbar').collapse('#navbar');
   // }
 
 
-    function logOut() {
+  function logOut() {
     Parse.User.logOut();
     $('#navbar').hide();
     $('#mainOutlet').load('login.html');
   };
 
- var getposts = function getPosts(currentUser) {
+  var function getPosts(currentUser) {
     $('#mainOutlet').load('feed.html');
     var query = new Parse.Query("Post");
     query.find({
@@ -126,12 +126,12 @@
         var allPosts = results;
         allPosts.map( function(item, index) {
           if(item.attributes.type == 'text'){
-             $.get("text_post.html", function (data) {
-               $('#mainOutlet').append(data);
-               $('.status_text').eq(index).text(item.attributes.text);
-               $('.timestamp').eq(index).text(item.createdAt);
-             })
-           }
+           $.get("text_post.html", function (data) {
+             $('#mainOutlet').append(data);
+             $('.status_text').eq(index).text(item.attributes.text);
+             $('.timestamp').eq(index).text(item.createdAt);
+           })
+         }
           // else if (item.attributes.type == 'picture') {
           //    $.get("picture_post.html", function (data) {
           //      $('#mainOutlet').append(data);
@@ -140,38 +140,38 @@
               // TODO: Insert photo from parse into DOM
               
               // TODO: Add badge type
-              }
-      )
+            }
+            )
         // results is an array of Parse.Object.
       };
       error: function(error) {
         // error is an instance of Parse.Error.
       }
     });
-  }})};
+}})};
 
 
-  function submitPost() {
-      var Post = Parse.Object.extend("Post");          
-      var post = new Post();
-      var text = $('#postText').val();
-      
-      
-      if (imagedata != ""){
-        var parseFile = new Parse.File('picture.jpg', {base64:imagedata});
-				parseFile.save().then(function() {
-					post.set("picture",parseFile);
-					post.set("type", "picture");	
-        });
-      } 
-      else {
-        post.set("type", "text");
-      }
-      
-      post.set("text", text);
-      
-      post.save(null, {
-        success: function(post) {
+function submitPost() {
+  var Post = Parse.Object.extend("Post");          
+  var post = new Post();
+  var text = $('#postText').val();
+  
+  
+  if (imagedata != ""){
+    var parseFile = new Parse.File('picture.jpg', {base64:imagedata});
+    parseFile.save().then(function() {
+     post.set("picture",parseFile);
+     post.set("type", "picture");	
+   });
+  } 
+  else {
+    post.set("type", "text");
+  }
+  
+  post.set("text", text);
+  
+  post.save(null, {
+    success: function(post) {
           // Execute any logic that should take place after the object is saved.
           alert('New object created with objectId: ' + post.id + post.type);
           imagedata = '';
@@ -183,23 +183,23 @@
           alert('Failed to create new object, with error code: ' + error);
         }
       });
-    }    
+}    
 </script>
 
 
-  <script type="text/javascript" charset="utf-8">
-  document.addEventListener("deviceready", onDeviceReady, false);
-  document.addEventListener("resume", onResume, false);
-  
-  
-    function onResume(){
+<script type="text/javascript" charset="utf-8">
+document.addEventListener("deviceready", onDeviceReady, false);
+document.addEventListener("resume", onResume, false);
+
+
+function onResume(){
       //kiip.startSession();
     }
     
     function onDeviceReady() {
       eitherReady();
     }
-  
+    
     $(document).ready(function() {
       console.log('doc ready');
       eitherReady();
@@ -223,9 +223,9 @@
         $('#mainOutlet').load('login.html');
         $('#navbar').hide();
       }  
-        
-      }
       
+    }
+    
     function kiipSuccessCallback(){
       console.log('kiip success');
     }
@@ -233,17 +233,17 @@
     function kiipFailureCallback(){
       console.log('kiip failure');
     }
-      
-      
+    
+    
     function makeId()
-      {
-          var text = "";
-          var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    {
+      var text = "";
+      var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-          for( var i=0; i < 5; i++ )
-              text += possible.charAt(Math.floor(Math.random() * possible.length));
-          return text;
-      }  
-  </script>
+      for( var i=0; i < 5; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+      return text;
+    }  
+    </script>
   </body>
-</html>
+  </html>

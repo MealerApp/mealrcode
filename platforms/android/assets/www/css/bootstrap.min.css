@@ -63,10 +63,12 @@ ul.nav.navbar-nav {
  }
  .info_divider {
  	border-top: 5px solid #758FC2;
+ 	margin-top: 5px;
  }
  * {
  	font-family: Calibri bold, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
  	font-size: 1.03em;
+ 	text-decoration: none;
  }
  .trackers a {
  	text-decoration: none;
@@ -160,4 +162,64 @@ p {
 }
 .water_content {
 	text-align: center;
+}
+div.water-tracker {
+width: 100%;
+margin-bottom: 10px;
+padding-bottom: 40px;
+}
+div.food-tracker {
+width: 100%;
+margin-bottom: 10px;
+padding-bottom: 40px;
+}
+.trackers p {
+	font-size: 2em;
+	margin-left: 2.1875em;
+	margin-top: 1.5em;
+}
+div.food-tracker a:hover {
+	text-decoration: none;
+	color: #FFD188;
+}
+div.water-tracker a:hover {
+	text-decoration: none;
+	color: #FFD188;
+}
+
+div.food-tracker {
+    transition:All 1s ease;
+    -webkit-transition:All 1s ease;
+    transform: rotate(0deg) scale(1) skew(0deg) translate(0px);
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(0px);
+    }
+div.food-tracker:hover {
+    transform: rotate(0deg) scale(1) skew(0deg) translate(30px, 0px);
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(30px, 0px);
+}
+div.water-tracker {
+    transition:All 1s ease;
+    -webkit-transition:All 1s ease;
+    transform: rotate(0deg) scale(1) skew(0deg) translate(0px);
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(0px);
+    }
+div.water-tracker:hover {
+    transform: rotate(0deg) scale(1) skew(0deg) translate(30px, 0px);
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(30px, 0px);
+}
+a {
+	text-decoration: none;
+}
+.badge_rows a img {
+	margin: 0px 10px 10px 10px;
+}
+a.navbar-brand.nav-title {
+	font-size: 24px;
+}
+.row a {
+	margin-left: 5px;
+	font-size: 16px;
+}
+img.default_pic.well {
+	border: 2px solid #E3E3E3;
 }

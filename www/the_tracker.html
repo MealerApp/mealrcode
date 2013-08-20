@@ -1,12 +1,14 @@
-
     <div class="trackers"><br>
-    	<div class='water-tracker'><a href="#" onclick="loadTracker();"><p>Water</p><br><img src="img/progress_bar.png"></a></div><br>
-        <div class='food-tracker'><a href="food_tracker.html"><p>Food Groups</p><br><img src="img/progress_bar.png"></a></div>  
+    	  <a href="#" onclick="loadTracker();"><div class='water-tracker'><p>Water</p><br><img src="img/progress_bar.png"></div></a><br>
+        <a href="#" onclick="loadFoodTracker();"><div class='food-tracker'><p>Food Groups</p><br><img src="img/progress_bar.png"></div></a>
     </div>
     
 <script>
     function loadTracker(){
       $('#mainOutlet').load('water_tracker.html');
-
   }
+      function loadFoodTracker(){
+      	$('#mainOutlet').load('food_tracker.html');
+      }
+  
 </script>    

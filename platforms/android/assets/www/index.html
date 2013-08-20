@@ -170,16 +170,19 @@
     });
   }
 
+var imagedata;
 
 function submitPost() {
   var Post = Parse.Object.extend("Post");          
   var post = new Post();
   var text = $('#postText').val();
   
+  var hasImage = document.getElementById("myImage").getAttribute('src') != '';
   
-  if (imagedata != ""){
+  if (hasImage){
     var parseFile = new Parse.File('picture.jpg', {base64:imagedata});
     parseFile.save().then(function() {
+      console.log(' a pic ');
      post.set("picture",parseFile);
      post.set("type", "picture");	
    });
@@ -193,8 +196,7 @@ function submitPost() {
   post.save(null, {
     success: function(post) {
           // Execute any logic that should take place after the object is saved.
-          alert('New object created with objectId: ' + post.id + post.type);
-          imagedata = '';
+          alert('New object created with objectId: ' + post.id);
           // TODO: now reload the posts again to get the new one to show
         },
         error: function(post, error) {
@@ -231,8 +233,6 @@ function onResume(){
       Parse.initialize(PARSE_APP, PARSE_JS);
       
       // kiip.init('fdad86017da03535b86f7d622b0d27db', '4d0ec4da394aab8d697ad23c54107b0f', kiipSuccessCallback, kiipFailureCallback);
-      
-      var imagedata = "";
       
       var currentUser = Parse.User.current()
       if (currentUser){

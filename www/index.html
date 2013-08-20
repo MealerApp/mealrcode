@@ -44,41 +44,29 @@
     </script>
     <script type="text/javascript" charset="utf-8">
 
-          function takePicture() {
+    function takePicture() {
         navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
             destinationType: Camera.DestinationType.DATA_URL
         });
-    
-    
-      function onSuccess(imageData) {
-          var image = document.getElementById('myImage');
-          image.src = "data:image/jpeg;base64," + imageData;
       }
-    
-        function onFail(message) {
-            alert('Failed because: ' + message);
-        }
-    }
 
-
-    
     function uploadPicture() {
       navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
         destinationType: Camera.DestinationType.DATA_URL,
         sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
       });
+    }
       
       
-      function onSuccess(imageData) {
-        var image = document.getElementById('myImage');
-        image.src = "data:image/jpeg;base64," + imageData;
-        image.show();
-        imagedata = imageData;
-      }
+    function onSuccess(imageData) {
+      var image = document.getElementById('myImage');
+      image.src = "data:image/jpeg;base64," + imageData;
+      image.show();
+      imagedata = imageData;
+    }
       
-      function onFail(message) {
-        alert('Failed because: ' + message);
-      }
+    function onFail(message) {
+      alert('Failed because: ' + message);
     }
     </script>
   </head>

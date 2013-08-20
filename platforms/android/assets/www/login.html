@@ -48,6 +48,7 @@
                 $('#mainOutlet').load('feed.html');
                 $('#navbar').show();
                 $('#signedIn').html('Signed in as ' + currentUser.getEmail());
+                getPosts(currentUser);
             },
             error:function(user, error) {
                 console.log("ERROR!");

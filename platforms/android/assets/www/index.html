@@ -213,8 +213,10 @@ function onResume(){
       
       var currentUser = Parse.User.current()
       if (currentUser){
+        $('#signedIn').html('Signed in as ' + currentUser.getEmail());
         $('#mainOutlet').load('feed.html');
-        getPosts(currentUser);
+        var res = getPosts(currentUser);
+        console.log(res);
       }
       else{
         $('#mainOutlet').load('login.html');

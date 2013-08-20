@@ -62,7 +62,7 @@
 
 
     
-    function takePicture() {
+    function uploadPicture() {
       navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
         destinationType: Camera.DestinationType.DATA_URL,
         sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
@@ -97,9 +97,9 @@
         <a class="navbar-brand nav-title" href="#" onclick='getPosts();'>Mealr</a>
         <div class="nav-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <li class="profile"><a href="#" onclick="navSelect();">Profile</a></li>
-            <li class="tracker"><a href="#" onclick="$('#mainOutlet').load('the_tracker.html');">Trackers</a></li>
-            <li class="badges"><a href="#" onclick="$('#mainOutlet').load('badges.html');">My Badges</a></li><!-- 
+            <li class="profile"><a href="#" onclick="navSelect('profile.html');">Profile</a></li>
+            <li class="tracker"><a href="#" onclick="navSelect('the_tracker.html');">Trackers</a></li>
+            <li class="badges"><a href="#" onclick="navSelect('badges.html');">My Badges</a></li><!-- 
             <li class="options"><a href="#" onclick="$('#mainOutlet').load('options.html');">Options</a></li>
  -->            <li>
               <p class="navbar-text" id='signedIn'></p>
@@ -128,8 +128,8 @@
   //   $('#navbar').collapse('#navbar');
   // }
 
-  function navSelect() {
-    $('#mainOutlet').load('profile.html');
+  function navSelect(page) {
+    $('#mainOutlet').load(page);
     $('.navbar-responsive-collapse').collapse('toggle');
   }
 

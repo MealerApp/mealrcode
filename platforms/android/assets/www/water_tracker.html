@@ -31,7 +31,7 @@
   var currentCount = Parse.User.current().get('water_count');
   $('#count').html(currentCount);
   function addCount() {
-    if (currentCount < 8){
+    if (currentCount != 8){
       Parse.User.current().increment('water_count', 1);
       Parse.User.current().save();
       currentCount += 1;

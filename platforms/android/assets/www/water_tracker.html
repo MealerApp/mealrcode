@@ -37,5 +37,12 @@
       currentCount += 1;
       $('#count').html(currentCount);
     }
+    else {
+		var r = confirm("You just drank 8 glasses of water! Click OK to redeem your badge.");
+		if (r==true) {
+		  $('#mainOutlet').load('redeem.html');
+		  }
+    	}
   }
+
   </script>

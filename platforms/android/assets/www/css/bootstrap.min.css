@@ -10,11 +10,15 @@
 /*Cream(#758FC2)
 tan(#FFD188)
 burnt orange(#003FCC)*/
+.span12 {
+	margin-left: 1.2em;
+}
 ul.nav.navbar-nav {
 	margin-top: 30px;
 }
 ul.nav.navbar-nav a {
 	background: #E3E3E3;
+	border: 2px solid;
 }
  .nav-title {
  	margin-top: 30px;
@@ -80,9 +84,9 @@ ul.nav.navbar-nav a {
  	height: 200px;
  }
  .trackers div {
- 	background-color: #003FCC;
+ 	background-color: #f5f5f5;
  	display: inline-block;
- 	border: 2px solid #FFD188;
+ 	border: 2px solid #003FCC;
  	font-size: 1.7em;
  }
 .water_glass {
@@ -116,7 +120,7 @@ ul.nav.navbar-nav a {
 	height: 9.3em;
 }
 .footer {
-	width: 40%;
+	width: 45%;
 	margin-left: 1.25em;
 }
 .status_text {
@@ -168,27 +172,26 @@ p {
 	text-align: center;
 }
 div.water-tracker {
-width: 100%;
+width: 95%;
 margin-bottom: 10px;
 padding-bottom: 40px;
 }
 div.food-tracker {
-width: 100%;
+width: 95%;
 margin-bottom: 10px;
 padding-bottom: 40px;
 }
 .trackers p {
 	font-size: 2em;
-	margin-left: 2.1875em;
 	margin-top: 1.5em;
 }
 div.food-tracker a:hover {
 	text-decoration: none;
-	color: #FFD188;
+	color: #f5f5f5;
 }
 div.water-tracker a:hover {
 	text-decoration: none;
-	color: #FFD188;
+	color: #f5f5f5;
 }
 
 div.food-tracker {
@@ -198,8 +201,8 @@ div.food-tracker {
     -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(0px);
     }
 div.food-tracker:hover {
-    transform: rotate(0deg) scale(1) skew(0deg) translate(30px, 0px);
-    -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(30px, 0px);
+    transform: rotate(0deg) scale(1) skew(0deg) translate(10px, 0px);
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(10px, 0px);
 }
 div.water-tracker {
     transition:All 1s ease;
@@ -208,8 +211,8 @@ div.water-tracker {
     -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(0px);
     }
 div.water-tracker:hover {
-    transform: rotate(0deg) scale(1) skew(0deg) translate(30px, 0px);
-    -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(30px, 0px);
+    transform: rotate(0deg) scale(1) skew(0deg) translate(10px, 0px);
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(10px, 0px);
 }
 a {
 	text-decoration: none;
@@ -233,4 +236,11 @@ img.default_pic.well {
 }
 button.navbar-toggle {
 	padding: 20px;
+}
+li.btn.btn-primary {
+	color: black;
+	background: #003FCC;
+}
+li.btn.btn-primary a {
+	color: white;
 }

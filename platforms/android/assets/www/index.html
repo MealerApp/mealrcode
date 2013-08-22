@@ -139,7 +139,8 @@
     $('#mainOutlet').load('login.html');
   }
 
-  function getPosts(currentUser) {
+  function getPosts(u) {
+    currentUser = u;
     $('#mainOutlet').load('feed.html');
     var query = new Parse.Query("Post");
     query.find({

@@ -5,13 +5,12 @@
 </div>
 <script>
   var currentCount = currentUser.get('water_count');
+  
   $('#count').html(currentCount);
   function addCount() {
     currentCount += 1;  
-    if (currentCount === 8){
-        
-        currentUser.addUnique('badges', 'u1Gh44zpf3');
-        
+    if (currentCount === 8){  
+      currentUser.addUnique('badges', 'u1Gh44zpf3');
     	var r = confirm("You just drank 8 glasses of water! Click OK to redeem your badge.");
   		if (r==true) {
   		  $('#mainOutlet').load('redeem.html');

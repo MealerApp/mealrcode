@@ -1,21 +1,5 @@
-<div class="content"><h1>Badges</h1></div><!-- 
-<div class="health_badges well" style="width:100%;"><a href="#" onclick="$('#mainOutlet').load('how_to.html');"><img src="img/health_badges.png"></a></div> -->
-<div class="badge_rows well row" style="width: 100%;">
-  <div class="well">
-    <img class="span4" src="" style="width:6em; height:6em;">
-    <div class="badgeContent span8">
-    <p id="badgeName">Basic Water Tracker</p>
-    <p id="badgeDescription">Drink the recommended 8 glasses of water a week</p>
-    </div>
-  </div>
-</div>
-
-	<!-- <a href="#" onclick="$('#mainOutlet').load('how_to.html');"><img class="well" src="img/badges_1.png" style="border:3px solid #E3E3E3; width: 8em; height: 23em;"></a>
-	<a href="#" onclick="$('#mainOutlet').load('how_to/how_to2.html');"><img class="well" src="img/badges_2.png" style="border:3px solid #E3E3E3; width: 8em; height: 23em;"></a>
-	<a href="#" onclick="$('#mainOutlet').load('how_to/how_to3.html');"><img class="well" src="img/badges_3.png" style="border:3px solid #E3E3E3; width: 8em; height: 23em;"></a>
-	<a href="#" onclick="$('#mainOutlet').load('how_to/how_to4.html');"><img class="well" src="img/badges_4.png" style="border:3px solid #E3E3E3; width: 8em; height: 23em;"></a> -->
-
-
+<div class="content"><h1>Badges</h1></div>
+<div id='badgeOutlet'></div>
 
 
 <script type="text/javascript">
@@ -49,6 +33,16 @@
     var image = badge.image;
     var name = badge.name;
     var description = badge.description;
+    
+    '<div class="badge_rows well row" style="width: 100%;">
+      <div class="well">
+        <img class="span4" src="" style="width:6em; height:6em;">
+        <div class="badgeContent span8">
+        <p id="badgeName">Basic Water Tracker</p>
+        <p id="badgeDescription">Drink the recommended 8 glasses of water a week</p>
+      </div>
+      </div>'
+    
   }
 
 </script>

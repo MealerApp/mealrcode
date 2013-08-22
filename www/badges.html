@@ -34,15 +34,16 @@
     var name = badge.name;
     var description = badge.description;
     
-    '<div class="badge_rows well row" style="width: 100%;">
+    var html = '<div class="badge_rows well row" style="width: 100%;">
       <div class="well">
-        <img class="span4" src="" style="width:6em; height:6em;">
+        <img class="span4" src="'+ image +'" style="width:6em; height:6em;">
         <div class="badgeContent span8">
-        <p id="badgeName">Basic Water Tracker</p>
-        <p id="badgeDescription">Drink the recommended 8 glasses of water a week</p>
+        <p id="badgeName">'+ name + '</p>
+        <p id="badgeDescription">'+ description + '</p>
       </div>
       </div>'
     
+    $('#badgeOutlet').append(html);
   }
 
 </script>

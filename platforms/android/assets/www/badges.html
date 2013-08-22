@@ -1,104 +1,50 @@
-<div class="content"><h1>Badges</h1></div><!-- 
-<div class="health_badges well" style="width:100%;"><a href="#" onclick="$('#mainOutlet').load('how_to.html');"><img src="img/health_badges.png"></a></div> -->
-<div class="badge_rows well row" style="width: 100%;">
-  <div class="well">
-    <img class="span4" src="" style="width:6em; height:6em;">
-    <div class="badgeContent span8">
-    <p id="badgeName">Basic Water Tracker</p>
-    <p id="badgeDescription">Drink the recommended 8 glasses of water a week</p>
-    </div>
-  </div>
-</div>
-
-
-
-<div class="badge_rows well row" style="width: 100%;">
-  <div class="well">
-    <img class="well" src="" style="width:6em; height:6em;">
-    <div class="badgeContent">
-    <p id="badgeName">Basic Water Tracker</p>
-    <p id="badgeDescription">Drink the recommended 8 glasses of water a week</p>
-    </div>
-  </div>
-</div>
-	<!-- <a href="#" onclick="$('#mainOutlet').load('how_to.html');"><img class="well" src="img/badges_1.png" style="border:3px solid #E3E3E3; width: 8em; height: 23em;"></a>
-	<a href="#" onclick="$('#mainOutlet').load('how_to/how_to2.html');"><img class="well" src="img/badges_2.png" style="border:3px solid #E3E3E3; width: 8em; height: 23em;"></a>
-	<a href="#" onclick="$('#mainOutlet').load('how_to/how_to3.html');"><img class="well" src="img/badges_3.png" style="border:3px solid #E3E3E3; width: 8em; height: 23em;"></a>
-	<a href="#" onclick="$('#mainOutlet').load('how_to/how_to4.html');"><img class="well" src="img/badges_4.png" style="border:3px solid #E3E3E3; width: 8em; height: 23em;"></a> -->
-
-
+<div class="content"><h1>Badges</h1></div>
+<div id='badgeOutlet'></div>
 
 
 <script type="text/javascript">
-
-  // Here we want to get the info for the badges a user has from parse
+   $(document).ready(function() {
   
-  // first, set the badges a user has to an array variable. You can get a user's badges just like you get the 
-  // water_count in water_tracker.html
-  
-  // then, iterate over that array using .map() like we did in the getPosts function in index.html
-  
-  // inside of the block, youll want to query Parse for a badge with each objectId in the badges array.
-  // see https://www.parse.com/docs/js/symbols/Parse.Query.html#get for the get query method, and look at the query
-  // we do in getPosts() for an example.
-  
-  // then youll want to insert the badge image and the name into the DOM. Since this isn't complex markup, you can 
-  // probably do it in this function instead of using another html file.
-  
-  // So the last part would look something like this 
-  // $('.badge_rows').append("<img src='" + badge.picture + "' class='give_a_class'><br/><span class='badge-name'>" + badge.name + "</span>");
- $(document).ready(function() {
-  
-  currentUser.fetch({
-    success: function(result){
-      var userBadges = currentUser.get('badges');
+    currentUser.fetch({
+      success: function(result){
+        var userBadges = currentUser.get('badges');
+        userBadges.map( function(badge) {
+          var query = new Parse.Query("Badge");
+          query.get(badge, {
+            success: function(result) {
+              insertBadge(result.attributes);
+            },    
+            error: function(error) {
+              console.log(error);
+            }
+          });
     
-      console.log(userBadges);
+        })  
+      },
     
-      userBadges.map( function(badge) {
-        var query = new Parse.Query("Badge");
-        query.get(badge, {
-          success: function(result) {
-            console.log(result.attributes.image._url);
-            insertBadge(result.attributes);
-          },  
-        
-          error: function(error) {
-          
-          }
-        });
-    
-      })  
-    },
-    
-    error: function(error){
-     console.log(error); 
+      error: function(error){
+       console.log(error); 
       
-    }
-  })    
-})
+      }
+    })    
+  })
 
   function insertBadge(badge){
     var image = badge.image;
     var name = badge.name;
     var description = badge.description;
+    
+    var html = '<div class="badge_rows well row" style="width: 100%;">
+      <div class="well">
+        <img class="span4" src="'+ image +'" style="width:6em; height:6em;">
+        <div class="badgeContent span8">
+        <p id="badgeName">'+ name + '</p>
+        <p id="badgeDescription">'+ description + '</p>
+      </div>
+      </div>'
+    
+    $('#badgeOutlet').append(html);
   }
-
-// for (var i = userBadges.length - 1; i >= 0; i--) {
-//   console.log('userBadges[i]');
-// };
-// 
-// var badgeDescription = Parse.Badge.current().get('description');
-// var badgeName = Parse.Badge.current().get('name');
-// var badgeImg = Parse.Badge.current().get('image');
-// 
-// userBadges.map(function() {
-//   var queryBadges = new Parse.Query('Badges');
-//   queryBadges.find(Parse.Badge.objectId)
-//   })
-// 
-// //did not give an image a id yet
-// document.write(document.getElementById('badgeWon').name);
 
 </script>
 

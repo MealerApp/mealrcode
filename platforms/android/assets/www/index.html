@@ -116,8 +116,8 @@
   //   $('#navbar').collapse('#navbar');
   // }
 //CANT SEEM TO ADD PATS TO INDIVIDUAL STATUSES; THAT I'M APPENDING DATA TO
-   var currentPat = Parse.Post.current().get('pat');
-  $('#like').html(currentPat);
+   // var currentPat = Parse.Post.current().get('pat');
+  // $('#like').html(currentPat);
   function addPat() {
       Parse.User.current().increment('pat', 1);
       Parse.User.current().save();
@@ -243,7 +243,6 @@ function onResume(){
         $('#signedIn').html('Signed in as ' + currentUser.getEmail());
         $('#mainOutlet').load('feed.html');
         var res = getPosts(currentUser);
-        console.log(res);
       }
       else{
         $('#mainOutlet').load('login.html');

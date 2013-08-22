@@ -7,11 +7,12 @@
   var currentCount = Parse.User.current().get('water_count');
   $('#count').html(currentCount);
   function addCount() {
-    if (currentCount != 8){
-      Parse.User.current().increment('water_count', 1);
-      Parse.User.current().save();
-      currentCount += 1;
-      $('#count').html(currentCount);
+    if (currentCount === 8){
+
+    	var r = confirm("You just drank 8 glasses of water! Click OK to redeem your badge.");
+  		if (r==true) {
+  		  $('#mainOutlet').load('redeem.html');
+  		}
     }
     else {
       // cool, so lets also make sure we save the fact that you earned this badge to Parse so that we can
@@ -29,11 +30,11 @@
       // when you have it right.
       
       // Once you get that right, head on over to profile.html and work on showing the badges a user has actually earned. 
-      
-		  var r = confirm("You just drank 8 glasses of water! Click OK to redeem your badge.");
-  		if (r==true) {
-  		  $('#mainOutlet').load('redeem.html');
-  		}
+     
+      Parse.User.current().increment('water_count', 1);
+      Parse.User.current().save();
+      currentCount += 1;
+      $('#count').html(currentCount);
     }
   }
 

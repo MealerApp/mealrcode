@@ -26,9 +26,26 @@
   // $('.badge_rows').append("<img src='" + badge.picture + "' class='give_a_class'><br/><span class='badge-name'>" + badge.name + "</span>");
 
 
-	// function loadHowTo() {
- //      	$('#mainOutlet').load('how_to.html');
- //      }
+
+var userBadges = new Array(); 
+userBadges[0] = Parse.User.current().get('badges');
+console.log(userBadges[0]);
+
+for (var i = userBadges.length - 1; i >= 0; i--) {
+  console.log('userBadges[i]');
+};
+
+var badgeDescription = Parse.Badge.current().get('description');
+var badgeName = Parse.Badge.current().get('name');
+var badgeImg = Parse.Badge.current().get('image');
+
+userBadges.map(function() {
+  var queryBadges = new Parse.Query('Badges');
+  queryBadges.find(Parse.Badge.objectId)
+  })
+
+//did not give an image a id yet
+document.write(document.getElementById('badgeWon').name);
 
 </script>
 

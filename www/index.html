@@ -115,7 +115,15 @@
   // function hideNavbar() {
   //   $('#navbar').collapse('#navbar');
   // }
-
+//CANT SEEM TO ADD PATS TO INDIVIDUAL STATUSES; THAT I'M APPENDING DATA TO
+   var currentPat = Parse.Post.current().get('pat');
+  $('#like').html(currentPat);
+  function addPat() {
+      Parse.User.current().increment('pat', 1);
+      Parse.User.current().save();
+      currentPat += 1;
+      $('#like').html(currentPat);
+    }
 
   function navSelect(page) {
     $('#mainOutlet').load(page);
@@ -136,7 +144,7 @@
       success: function(results) {
         var allPosts = results;
         allPosts.map( function(item, index) {
-          if(item.attributes.type == 'text'){
+          if(item.attributes.type == 'text') {
             $.get("post_partials/text_post.html", function (data) {
               $('#mainOutlet').append(data);
               $('.status_text').eq(index).text(item.attributes.text);
@@ -149,7 +157,14 @@
               $('.status_text').eq(index).text(item.attributes.text);
               $('.timestamp').eq(index).text(item.createdAt);
             })
-          }
+          }   //PUT THIS ELSE IN A ELSE IF OR LEAVE IT AS A ELSE?
+            else {
+              $.get("post_partials/badge_post.html", function (data) {
+                $('#mainOutlet').append(data);
+                $('.status_text').eq(index).text(item.attributes.text);
+                $('.timestamp').eq(index).text(item.createdAt);
+              })
+            }
         })
       },  
       
@@ -185,7 +200,7 @@ function submitPost() {
   post.save(null, {
     success: function(post) {
           // Execute any logic that should take place after the object is saved.
-          alert('New object created with objectId: ' + post.id);
+          alert('Updated your status!');
           // TODO: now reload the posts again to get the new one to show
         },
         error: function(post, error) {

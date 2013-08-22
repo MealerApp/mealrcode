@@ -4,11 +4,13 @@
   <h1>Glasses Today</h1>
 </div>
 <script>
-  var currentCount = Parse.User.current().get('water_count');
+  var currentCount = currentUser.get('water_count');
   $('#count').html(currentCount);
   function addCount() {
+    currentCount += 1;  
     if (currentCount === 8){
-
+        currentUser.addUnique('badges', 'u1Gh44zpf3');
+        
     	var r = confirm("You just drank 8 glasses of water! Click OK to redeem your badge.");
   		if (r==true) {
   		  $('#mainOutlet').load('redeem.html');
@@ -32,10 +34,10 @@
       // Once you get that right, head on over to profile.html and work on showing the badges a user has actually earned. 
      
       Parse.User.current().increment('water_count', 1);
-      Parse.User.current().save();
-      currentCount += 1;
       $('#count').html(currentCount);
     }
+    Parse.User.current().save();
+
   }
 
   </script>

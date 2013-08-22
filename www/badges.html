@@ -30,18 +30,18 @@
   })
 
   function insertBadge(badge){
-    var image = badge.image;
+    var image = badge.image._url;
     var name = badge.name;
     var description = badge.description;
     
-    var html = '<div class="badge_rows well row" style="width: 100%;">
-      <div class="well">
-        <img class="span4" src="'+ image +'" style="width:6em; height:6em;">
-        <div class="badgeContent span8">
-        <p id="badgeName">'+ name + '</p>
-        <p id="badgeDescription">'+ description + '</p>
-      </div>
-      </div>'
+    var html = '<div class="badge_rows well row" style="width: 100%;"> \
+      <div class="well"> \
+        <img class="span4" src="'+ image +'" style="width:6em; height:6em;"/> \
+        <div class="badgeContent span8"> \
+        <p id="badgeName">' + name + '</p> \
+        <p id="badgeDescription">'+ description + '</p> \
+      </div> \
+      </div>';
     
     $('#badgeOutlet').append(html);
   }

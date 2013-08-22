@@ -32,7 +32,7 @@ ul.nav.navbar-nav a {
  	float: left;
  	list-style-type: none;
  	background-color: #FFD188;
- 	padding: 20px;
+ 	padding: 20px 0px 20px 0px;
  	margin-left: 10px;
  }
  .feed-navigation a {
@@ -243,4 +243,12 @@ li.btn.btn-primary {
 }
 li.btn.btn-primary a {
 	color: white;
+}
+.badgeContent {
+}
+#badgeName {
+	font-size: 1.5em;
+}
+#badgeDescription {
+	font-size: 1.125em;
 }

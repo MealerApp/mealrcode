@@ -43,7 +43,7 @@
     app.initialize();
     </script>
     <script type="text/javascript" charset="utf-8">
-
+    var currentUser;
     function takePicture() {
         navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
             destinationType: Camera.DestinationType.DATA_URL
@@ -127,6 +127,7 @@
 
   function navSelect(page) {
     $('#mainOutlet').load(page);
+    currentUser.fetch
     $('.navbar-responsive-collapse').collapse('toggle');
   }
 
@@ -238,7 +239,7 @@ function onResume(){
       
       // kiip.init('fdad86017da03535b86f7d622b0d27db', '4d0ec4da394aab8d697ad23c54107b0f', kiipSuccessCallback, kiipFailureCallback);
       
-      var currentUser = Parse.User.current()
+      currentUser = Parse.User.current()
       if (currentUser){
         $('#signedIn').html('Signed in as ' + currentUser.getEmail());
         $('#mainOutlet').load('feed.html');

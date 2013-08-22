@@ -25,24 +25,34 @@
   // So the last part would look something like this 
   // $('.badge_rows').append("<img src='" + badge.picture + "' class='give_a_class'><br/><span class='badge-name'>" + badge.name + "</span>");
  $(document).ready(function() {
-  var userBadges = ["u1Gh44zpf3"];
   
-  // console.log(currentUser.get('badges'));
-  
-  userBadges.map( function(badge) {
-    var query = new Parse.Query("Badge");
-    query.get(badge, {
-      success: function(result) {
-        console.log(result.attributes.image._url);
-        insertBadge(result.attributes);
-      },  
-      
-      error: function(error) {
+  currentUser.fetch({
+    success: function(result){
+      var userBadges = currentUser.get('badges');
+    
+      console.log(userBadges);
+    
+      userBadges.map( function(badge) {
+        var query = new Parse.Query("Badge");
+        query.get(badge, {
+          success: function(result) {
+            console.log(result.attributes.image._url);
+            insertBadge(result.attributes);
+          },  
         
-      }
-    });
-
-  })
+          error: function(error) {
+          
+          }
+        });
+    
+      })  
+    },
+    
+    error: function(error){
+     console.log(error); 
+      
+    }
+  })    
 })
 
   function insertBadge(badge){

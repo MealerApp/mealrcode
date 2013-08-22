@@ -134,6 +134,7 @@
 
   function logOut() {
     Parse.User.logOut();
+    currentUser = null;
     $('#navbar').hide();
     $('#mainOutlet').load('login.html');
   }

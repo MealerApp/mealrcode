@@ -32,6 +32,20 @@
     var post = new Post();
     post.set("type",'badge');
     var badgePost = currentUser.getUsername() + " just won the water badge"; 
+    post.set("text", badgePost);
+    // TODO post.set('picture', );
+    post.save(null, {
+        success: function(post) {
+          // Execute any logic that should take place after the object is saved.
+          //alert('Updated your status!');
+          // TODO: now reload the posts again to get the new one to show
+        },
+        error: function(post, error) {
+          // Execute any logic that should take place if the save fails.
+          // error is a Parse.Error with an error code and description.
+          //alert('Failed to create new object, with error code: ' + error);
+        }
+      });
     console.log(badgePost);
     
   }

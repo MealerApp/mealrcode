@@ -166,7 +166,7 @@
               $.get("post_partials/badge_post.html").done(  function (data) {
                 $('#mainOutlet').append(data);
                 $('.status_text').eq(index).text(item.attributes.text);
-                $('#badgeImg').eq(index).setAttribute('src', item.attributes.picture._url);
+                $('.badgeImg').eq(index)[0].setAttribute('src', item.attributes.picture._url);
                 $('.timestamp').eq(index).text(item.createdAt);
               })
             }
@@ -185,7 +185,6 @@ function submitPost() {
   var Post = Parse.Object.extend("Post");          
   var post = new Post();
   var text = $('#postText').val();
-  
   var hasImage = document.getElementById("myImage").getAttribute('src') != '';
   
   if (hasImage){
@@ -201,6 +200,7 @@ function submitPost() {
   }
   
   post.set("text", text);
+  post.set("user", currentUser);
   
   post.save(null, {
     success: function(post) {

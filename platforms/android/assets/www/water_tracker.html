@@ -1,20 +1,23 @@
-<div class="water_glass"><a href="#" onclick="addCount();"><img src="img/glass.png" width='60%'></a></div>
+<div class="water_glass"><a onclick="addCount();"><img src="img/glass.png" width='60%'></a></div>
 <div class="water_content">
   <h2 class="glass_count"><span id='count'></span>/8</h2>
   <h1>Glasses Today</h1>
 </div>
-<script>
+<script type="text/javascript" charset="utf-8">
+  console.log(currentUser);
   var currentCount = currentUser.get('water_count');
-  
   $('#count').html(currentCount);
+  
   function addCount() {
     currentCount += 1;  
     if (currentCount === 8){  
       currentUser.addUnique('badges', 'u1Gh44zpf3'); // winning a badge
-      
+      currentUser.set('water_count', 0);
+    	$('.water_content').html('<h2>Come back tomorrow and drink another 8 glasses!</h2>');
+    	
     	var r = confirm("You just drank 8 glasses of water! Click OK to redeem your badge.");
     	submitBadgePost();
-  		if (r==true) {
+  		if (r===true) {
   		  $('#mainOutlet').load('redeem.html');
   		}
     }
@@ -28,62 +31,43 @@
   }
 
   function submitBadgePost() {
-    var Post = Parse.Object.extend("Post");          
-    var post = new Post();
-    post.set("type",'badge');
-    var badgePost = currentUser.getUsername() + " just won the water badge"; 
-    post.set("text", badgePost);
-    // TODO post.set('picture', );
-    post.save(null, {
-        success: function(post) {
-          // Execute any logic that should take place after the object is saved.
-          //alert('Updated your status!');
-          // TODO: now reload the posts again to get the new one to show
-        },
-        error: function(post, error) {
-          // Execute any logic that should take place if the save fails.
-          // error is a Parse.Error with an error code and description.
-          //alert('Failed to create new object, with error code: ' + error);
-        }
-      });
-    console.log(badgePost);
+    // get badge with id u1Gh44zpf3 and set to variable badge
+    var badge;
+    var query = new Parse.Query("Badge");
+    query.get('u1Gh44zpf3',{
+      
+      success: function(results){
+        badge = results;
+        var Post = Parse.Object.extend("Post");          
+        var post = new Post();
+        post.set("type",'badge');
+        var badgePost = currentUser.getUsername() + " just won the water badge"; 
+        post.set("text", badgePost);
+        post.set('picture', badge.attributes.image);
+        post.save(null, {
+            success: function(post) {
+              // Execute any logic that should take place after the object is saved.
+              //alert('Updated your status!');
+              // TODO: now reload the posts again to get the new one to show
+            },
+            error: function(post, error) {
+              // Execute any logic that should take place if the save fails.
+              // error is a Parse.Error with an error code and description.
+              //alert('Failed to create new object, with error code: ' + error);
+            }
+          });
+      },
+      
+      error: function(results){
+        
+        
+      }
+      
+    });
+    
+
     
   }
-  
-  
-  function submitPost() {
-  var Post = Parse.Object.extend("Post");          
-  var post = new Post();
-  var text = $('#postText').val();
-  
-  var hasImage = document.getElementById("myImage").getAttribute('src') != '';
-  
-  if (hasImage){
-    var parseFile = new Parse.File('picture.jpg', {base64:imagedata});
-    parseFile.save().then(function() {
-      console.log(' a pic ');
-     post.set("picture",parseFile);
-     post.set("type", "picture");	
-   });
-  } 
-  else {
-    post.set("type", "text");
-  }
-  
-  post.set("text", text);
-  
-  post.save(null, {
-    success: function(post) {
-          // Execute any logic that should take place after the object is saved.
-          alert('Updated your status!');
-          // TODO: now reload the posts again to get the new one to show
-        },
-        error: function(post, error) {
-          // Execute any logic that should take place if the save fails.
-          // error is a Parse.Error with an error code and description.
-          alert('Failed to create new object, with error code: ' + error);
-        }
-      });
-}    
+
 
   </script>

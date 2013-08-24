@@ -12,7 +12,7 @@
           query.get(badge, {
             success: function(result) {
               insertBadge(result.attributes);
-              submitBadgePost(result.attributes);
+              // submitBadgePost(result.attributes);
               console.log(submitBadgePost);
               // //CHANGES
               // $('.badge_row').append("<img src='" + image + "' class='badgeImg'><br/><span class='badge-name'>" + badge.name + "</span>");
@@ -64,16 +64,6 @@
     $('#badgeOutlet').append(html);
   }
 
-  function submitBadgePost(badge) {
-    var Post = Parse.Object.extend("Post");          
-    var post = new Post();
-    post.set("type",'badge');
-    var badgePost = currentUser.getUsername() + " just won " + badge.name; 
-    console.log(badgePost);
-
-    // document.write(badgePost);
-
-  }
 
   // $('.badge_row').append("<img src='" + badge.image._url + "' class='give_a_class'><br/><span class='badge-name'>" + badge.name + "</span>");
 

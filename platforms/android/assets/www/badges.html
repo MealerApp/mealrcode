@@ -1,6 +1,7 @@
 <div class="content"><h1>Badges</h1></div>
 <div id='badgeOutlet'></div>
 
+<a href="#" onclick="getPosts();">AH</a>
 
 <script type="text/javascript">
    $(document).ready(function() {
@@ -14,16 +15,20 @@
             success: function(result) {
               insertBadge(result.attributes);
               submitBadgePost(result.attributes);
-              //CHANGES
-              $.get("post_partials/badge_post.html", function (data) {
-                $('#mainOutlet').append(data);
-                $('.status_text').eq(index).text(item.attributes.text);
-                $('.timestamp').eq(index).text(item.createdAt);
-              })
-              console.log('lol');
+              console.log(submitBadgePost);
+              // //CHANGES
+              // $('.badge_row').append("<img src='" + image + "' class='badgeImg'><br/><span class='badge-name'>" + badge.name + "</span>");
+              //     $.get("post_partials/badge_post.html", function (data) {
+              //      $('#mainOutlet').append(data);
+              //      $('.badge_row').eq(index).text(item.attributes.text);
+              //      $('.timestamp').eq(index).text(item.createdAt);
+              // })
+              // $.get("post_partials/badge_post.html", function (data) {
+              //   $('#mainOutlet').append(data);
+              //   $('.badge_row').eq(index).text(item.attributes.text);
+              //   $('.timestamp').eq(index).text(item.createdAt);
 
-
-
+              // // console.log('lol');
 
 
 
@@ -68,15 +73,15 @@
     var badgePost = currentUser.getUsername() + " just won " + badge.name; 
     console.log(badgePost);
 
+    // document.write(badgePost);
+
   }
+
+  // $('.badge_row').append("<img src='" + badge.image._url + "' class='give_a_class'><br/><span class='badge-name'>" + badge.name + "</span>");
+
+
+//  $.get("post_partials/badge_post.html", function (data) {
+//   $('.badge_row').append("<img src='" + badge.image._url + "' class='give_a_class'><br/><span class='badge-name'>" + badge.name + "</span>");
+// })
+
 </script>
-
-
-
-
-
-
-
-
-
-

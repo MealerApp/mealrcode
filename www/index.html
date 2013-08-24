@@ -167,15 +167,18 @@
               $('#statusName').html(currentUser.getUsername());
             })
           }   //PUT THIS ELSE IN A ELSE IF OR LEAVE IT AS A ELSE?
-            else {
+            else if (item.attributes.type == 'badge') {
               $.get("post_partials/badge_post.html", function (data) {
                 $('#mainOutlet').append(data);
-                $('.status_text').eq(index).text(item.attributes.text);
+                $('.badge_row').eq(index).text(item.attributes.text);
                 $('.timestamp').eq(index).text(item.createdAt);
 
                 //
                 $('#statusName').html(currentUser.getUsername());
               })
+            }
+            else {
+              
             }
         })
       },  

@@ -166,6 +166,7 @@
               $.get("post_partials/badge_post.html").done(  function (data) {
                 $('#mainOutlet').append(data);
                 $('.status_text').eq(index).text(item.attributes.text);
+                $('#badgeImg').eq(index).setAttribute('src', item.attributes.picture._url);
                 $('.timestamp').eq(index).text(item.createdAt);
               })
             }

@@ -13,6 +13,21 @@
           query.get(badge, {
             success: function(result) {
               insertBadge(result.attributes);
+              submitBadgePost(result.attributes);
+              //CHANGES
+              $.get("post_partials/badge_post.html", function (data) {
+                $('#mainOutlet').append(data);
+                $('.status_text').eq(index).text(item.attributes.text);
+                $('.timestamp').eq(index).text(item.createdAt);
+              })
+              console.log('lol');
+
+
+
+
+
+
+              //CHANGES
             },    
             error: function(error) {
               console.log(error);
@@ -46,6 +61,14 @@
     $('#badgeOutlet').append(html);
   }
 
+  function submitBadgePost(badge) {
+    var Post = Parse.Object.extend("Post");          
+    var post = new Post();
+    post.set("type",'badge');
+    var badgePost = currentUser.getUsername() + " just won " + badge.name; 
+    console.log(badgePost);
+
+  }
 </script>
 
 

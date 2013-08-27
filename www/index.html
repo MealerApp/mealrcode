@@ -152,8 +152,7 @@
               $('#mainOutlet').append(data);
               $('.status_text').eq(index).text(item.attributes.text);
               //$('.timestamp').eq(index).text(item.createdAt);
-              
-              
+              $('#statusName').eq(index).html(item.attributes.user.getUsername());
               
             })
          }
@@ -161,7 +160,9 @@
             $.get("post_partials/picture_post.html").done( function (data) {
               $('#mainOutlet').append(data);
               $('.status_text').eq(index).text(item.attributes.text);
+              $('#statusName').eq(index).text(item.attributes.user.getUsername());
 
+              //$('#statusName').currentUser);
               //IF WERE SETTING THIS AS A PICTURE TYPE THEN WHY DOES IT HAVE A .TEXT HANDLER
 
 
@@ -173,6 +174,8 @@
               $.get("post_partials/badge_post.html").done(  function (data) {
                 $('#mainOutlet').append(data);
                 $('.status_text').eq(index).text(item.attributes.text);
+              $('#statusName').eq(index).text(item.attributes.user.getUsername());
+
               //ORIGINAL  
               $('.badgeImg').eq(index)[0].setAttribute('src', item.attributes.picture._url);
 

@@ -47,6 +47,7 @@ currentUser = Parse.User.current();
         var badgePost = currentUser.getUsername() + " just won the water badge"; 
         post.set("text", badgePost);
         post.set('picture', badge.attributes.image);
+        post.set('user', currentUser);
         post.save(null, {
             success: function(post) {
               // Execute any logic that should take place after the object is saved.

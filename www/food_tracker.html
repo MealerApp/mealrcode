@@ -1,5 +1,5 @@
   <style type="text/css">
-	#tfheader{
+/*	#tfheader{
 		background-color:#faf3bc;
 		opacity: .6;
 	}
@@ -39,52 +39,53 @@
 		background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
 		background: -moz-linear-gradient(top,  #0095cc,  #00678e);
 	}
-	/* Fixes submit button height problem in Firefox */
+	/* Fixes submit button height problem in Firefox 
 	.tfbutton::-moz-focus-inner {
 	  border: 0;
 	}
 	.tfclear{
 		clear:both;
-	}
+	}*/*/
 </style>
 <div class="peanuts"><img src="img/peanuts.png"></div>
 	
 	<div id="tfheader">
 		<form id="tfnewsearch" method="get" action="http://www.google.com">
-		        <input type="text" class="tftextinput" name="q" size="21" maxlength="120"><input type="submit" value="search" class="tfbutton">
+		        <input type="text" class="tftextinput" name="q" size="21" maxlength="120" value="Peanuts"><input type="submit" value="Add" class="tfbutton">
 		</form>
 	<div class="tfclear"></div>
 	</div>
-
-<table class="tracker_table">
-	<tr>
-		<td>Food Groups</td>
-		<td>Current</td>
-		<td>Recomended</td>
+<div class="well" style="border: 3px solid #003ffc;">
+<table class="well tracker_table">
+	<tr class="well">
+		<td class="well top_row">Food Groups</td>
+		<td class="top_row">Current</td>
+		<td class="top_row">Recomended</td>
 	</tr>
-	<tr>
-		<td>Protein</td>
+	<tr class="well">
+		<td class="well">Protein</td>
 		<td>23 g</td>
 		<td>243 g</td>
 	</tr>
-	<tr>
-		<td>Dairy</td>
+	<tr class="well">
+		<td class="well">Dairy</td>
 		<td>16 g</td>
 		<td>124 g</td>
 	</tr>
-	<tr>
-		<td>Vegetables</td>
+	<tr class="well">
+		<td class="well">Vegetables</td>
 		<td>18 g</td>
 		<td>42 g</td>
 	</tr>
-	<tr>
-		<td>Fruits</td>
+	<tr class="well">
+		<td class="well">Fruits</td>
 		<td>21 g</td>
 		<td>48 g</td>
 	</tr>
-	<tr>
-		<td>Grains</td>
+	<tr class="well">
+		<td class="well">Grains</td>
 		<td>34 g</td>
 		<td>68 g</td>
 	</tr>
 </table>
+</div>

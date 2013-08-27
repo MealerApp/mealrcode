@@ -65,9 +65,9 @@
 	</tr>
 	<tr class="well">
 		<td class="well">Protein</td>
-		<td>3 sv</td>
+		<td><span id="protein"></span> sv</td>
 		<td>4 sv</td>
-		<td class="btn btn-lg">Add</td>
+		<td class="btn btn-lg" onclick="addProtein();">Add</td>
 	</tr>
 	<tr class="well">
 		<td class="well">Dairy</td>
@@ -96,3 +96,29 @@
 	<p>sv = Serving</p>
 </table>
 </div>
+
+<script type="text/javascript">
+
+var currentProtein = Parse.User.current().get('protein_count');
+  $('#protein').html(currentProtein);
+  function addProtein() {
+      Parse.User.current().increment('protein_count', 1);
+      Parse.User.current().save();
+      currentProtein += 1;
+      $('#protein').html(currentProtein);
+    }
+
+// var currentProtein = Parse.User.current().get('protein_count');
+//   $('#protein').html(currentProtein);
+//   function addProtein() {
+//   	if (currentProtein > 4) {
+//       Parse.User.current().increment('protein_count', 1);
+//       Parse.User.current().save();
+//       currentProtein += 1;
+//       $('#protein').html(currentProtein);
+//   };
+//     }
+
+
+
+</script>

@@ -13,12 +13,12 @@
 
 <script type="text/javascript">
 
- // var currentPat = Parse.User.current().get('pat');
- //  $('#like').html(currentPat);
- //  function addPat() {
- //      Parse.User.current().increment('pat', 1);
- //      Parse.User.current().save();
- //      currentPat += 1;
- //      $('#like').html(currentPat);
- //    }
+ var currentPat = Parse.User.current().get('pat');
+  $('#like').html(currentPat);
+  function addPat() {
+      Parse.User.current().increment('pat', 1);
+      Parse.User.current().save();
+      currentPat += 1;
+      $('#like').html(currentPat);
+    }
 </script>

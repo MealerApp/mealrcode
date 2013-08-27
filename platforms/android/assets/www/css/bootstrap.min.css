@@ -150,13 +150,13 @@ p {
 }
 #checkbox p {
 	font-size: 8px;
-}
+}/*
 #myImage {
 	width:8.75em; 
-	height:8.75em; /*
-	display: none;*/
+	height:8.75em; 
+	display: none;
 	image-orientation: -90deg; 
-}
+}*/
 .row {
 	width: 100%;
 }
@@ -251,4 +251,11 @@ li.btn.btn-primary a {
 }
 #badgeDescription {
 	font-size: 1.125em;
+}
+td.top_row {
+	border: 2px solid #D2D2D2;
+}
+td.btn {
+	margin-left: 1.8em;
+	margin-top: 0.5em;
 }

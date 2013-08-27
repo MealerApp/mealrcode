@@ -127,7 +127,7 @@
 
   function navSelect(page) {
     $('#mainOutlet').load(page);
-    currentUser.fetch
+    //currentUser.fetch
     $('.navbar-responsive-collapse').collapse('toggle');
   }
 
@@ -151,7 +151,7 @@
             $.get("post_partials/text_post.html").done( function (data) {
               $('#mainOutlet').append(data);
               $('.status_text').eq(index).text(item.attributes.text);
-              $('.timestamp').eq(index).text(item.createdAt);
+              //$('.timestamp').eq(index).text(item.createdAt);
               
               
               
@@ -161,7 +161,11 @@
             $.get("post_partials/picture_post.html").done( function (data) {
               $('#mainOutlet').append(data);
               $('.status_text').eq(index).text(item.attributes.text);
-              $('.timestamp').eq(index).text(item.createdAt);
+
+              //IF WERE SETTING THIS AS A PICTURE TYPE THEN WHY DOES IT HAVE A .TEXT HANDLER
+
+
+              //$('.timestamp').eq(index).text(item.createdAt);
             })
           }   //PUT THIS ELSE IN A ELSE IF OR LEAVE IT AS A ELSE?
             else if (item.attributes.type == 'badge') {
@@ -169,8 +173,13 @@
               $.get("post_partials/badge_post.html").done(  function (data) {
                 $('#mainOutlet').append(data);
                 $('.status_text').eq(index).text(item.attributes.text);
-                $('.badgeImg').eq(index)[0].setAttribute('src', item.attributes.picture._url);
-                $('.timestamp').eq(index).text(item.createdAt);
+              //ORIGINAL  
+              $('.badgeImg').eq(index)[0].setAttribute('src', item.attributes.picture._url);
+
+
+              //var image = src('img/first_badge.png');
+             // $('.badgeImg').eq(index)[0].src('img/first_badge.png');
+                //$('.timestamp').eq(index).text(item.createdAt);
               })
             }
         })

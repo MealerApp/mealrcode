@@ -255,3 +255,7 @@ li.btn.btn-primary a {
 td.top_row {
 	border: 2px solid #D2D2D2;
 }
+td.btn {
+	margin-left: 1.8em;
+	margin-top: 0.5em;
+}

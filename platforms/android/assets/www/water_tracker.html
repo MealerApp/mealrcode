@@ -4,6 +4,9 @@
   <h1>Glasses Today</h1>
 </div>
 <script type="text/javascript" charset="utf-8">
+
+currentUser = Parse.User.current();
+
   console.log(currentUser);
   var currentCount = currentUser.get('water_count');
   $('#count').html(currentCount);

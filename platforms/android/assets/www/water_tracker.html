@@ -4,7 +4,15 @@
   <h1>Glasses Today</h1>
 </div>
 <script type="text/javascript" charset="utf-8">
+ $( document ).ready(function() {
+
+
+
+});
+
   console.log(currentUser);
+  currentUser = Parse.User.current();
+
   var currentCount = currentUser.get('water_count');
   $('#count').html(currentCount);
   

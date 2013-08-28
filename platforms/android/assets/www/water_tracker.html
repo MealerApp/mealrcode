@@ -35,6 +35,7 @@ currentUser = Parse.User.current();
 
   function submitBadgePost() {
     // get badge with id u1Gh44zpf3 and set to variable badge
+    _user = currentUser
     var badge;
     var query = new Parse.Query("Badge");
     query.get('u1Gh44zpf3',{
@@ -44,9 +45,10 @@ currentUser = Parse.User.current();
         var Post = Parse.Object.extend("Post");          
         var post = new Post();
         post.set("type",'badge');
-        var badgePost = currentUser.getUsername() + " just won the water badge"; 
+        var badgePost = currentUser.get('username') + " just won the water badge"; 
         post.set("text", badgePost);
         post.set('picture', badge.attributes.image);
+        post.set('user', currentUser);
         post.save(null, {
             success: function(post) {
               // Execute any logic that should take place after the object is saved.

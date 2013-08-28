@@ -143,7 +143,7 @@
     currentUser = u;
     $('#mainOutlet').load('feed.html');
     var query = new Parse.Query("Post");
-    query.find({
+    query.descending('createdAt').include('user').find({
       success: function(results) {
         var allPosts = results;
         allPosts.map( function(item, index) {
@@ -151,7 +151,9 @@
             $.get("post_partials/text_post.html").done( function (data) {
               $('#mainOutlet').append(data);
               $('.status_text').eq(index).text(item.attributes.text);
+              $('.timestamp').eq(index).text(item.createdAt);
               //$('.timestamp').eq(index).text(item.createdAt);
+              console.log(item.attributes.user.get('username'));
               $('#statusName').eq(index).html(item.attributes.user.getUsername());
               
             })
@@ -170,14 +172,17 @@
             })
           }   //PUT THIS ELSE IN A ELSE IF OR LEAVE IT AS A ELSE?
             else if (item.attributes.type == 'badge') {
-              console.log('badge type');
               $.get("post_partials/badge_post.html").done(  function (data) {
                 $('#mainOutlet').append(data);
                 $('.status_text').eq(index).text(item.attributes.text);
               $('#statusName').eq(index).html(item.attributes.user.getUsername());
+<<<<<<< HEAD
               
+=======
+
+>>>>>>> fec501d16ca02e165d04cdf3d81f2a604ca239c2
               //ORIGINAL  
-              $('.badgeImg').eq(index)[0].setAttribute('src', item.attributes.picture._url);
+              // $('.badgeImg').eq(index)[0].setAttribute('src', item.attributes.picture._url);
 
 
               //var image = src('img/first_badge.png');

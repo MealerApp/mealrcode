@@ -143,7 +143,7 @@
     currentUser = u;
     $('#mainOutlet').load('feed.html');
     var query = new Parse.Query("Post");
-    query.find({
+    query.descending('createdAt').include('user').find({
       success: function(results) {
         var allPosts = results;
         allPosts.map( function(item, index) {
@@ -153,14 +153,18 @@
               $('.status_text').eq(index).text(item.attributes.text);
               $('.timestamp').eq(index).text(item.createdAt);
               //$('.timestamp').eq(index).text(item.createdAt);
-
+              console.log(item.attributes.user.get('username'));
+              $('#statusName').eq(index).html(item.attributes.user.getUsername());
+              
             })
          }
           else if (item.attributes.type == 'picture') {
             $.get("post_partials/picture_post.html").done( function (data) {
               $('#mainOutlet').append(data);
               $('.status_text').eq(index).text(item.attributes.text);
+              $('#statusName').eq(index).html(item.attributes.user.getUsername());
 
+              //$('#statusName').currentUser);
               //IF WERE SETTING THIS AS A PICTURE TYPE THEN WHY DOES IT HAVE A .TEXT HANDLER
 
 
@@ -168,12 +172,13 @@
             })
           }   //PUT THIS ELSE IN A ELSE IF OR LEAVE IT AS A ELSE?
             else if (item.attributes.type == 'badge') {
-              console.log('badge type');
               $.get("post_partials/badge_post.html").done(  function (data) {
                 $('#mainOutlet').append(data);
                 $('.status_text').eq(index).text(item.attributes.text);
+              $('#statusName').eq(index).html(item.attributes.user.getUsername());
+
               //ORIGINAL  
-              $('.badgeImg').eq(index)[0].setAttribute('src', item.attributes.picture._url);
+              // $('.badgeImg').eq(index)[0].setAttribute('src', item.attributes.picture._url);
 
 
               //var image = src('img/first_badge.png');

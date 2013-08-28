@@ -5,7 +5,7 @@
                   <p class="status_text">Just had lunch! This fruit was awesome (GO FRUIT)</p>
                   <img class="status_images" src="img/lunch.jpg"><br>
                   <div class="like"><a href="#" onclick="addPat();" class="btn footer"><span id="like"></span> Pats</a>
-                  <a href="#" class="btn footer">Challenge</a></div>
+                  <a href="#" onclick="proveIt();" class="btn footer">Challenge</a></div>
               </div>
           </div>
       </div>
@@ -21,4 +21,8 @@
       currentPat += 1;
       $('#like').html(currentPat);
     }
+
+  function proveIt() {
+    alert('Challenge sent!');
+  }
 </script>

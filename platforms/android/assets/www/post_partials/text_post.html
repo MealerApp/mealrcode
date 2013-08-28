@@ -4,7 +4,7 @@
                 <img class="default_pic" src="img/Rajesh.png"><a href="#" id="statusName" class=" span2"></a><p class='timestamp'></p>
                 <p id='statusText' class="status_text"></p>
                   <div class="like"><a href="#" onclick="addPat();" class="btn footer"><span id="like"></span> Pats</a>
-                <a href="#" class="btn footer">Challenge</a></div>
+                <a href="#" onclick="proveIt();" class="btn footer">Challenge</a></div>
             </div>
         </div>
     </div>
@@ -33,4 +33,7 @@
       currentPat += 1;
       $('#like').html(currentPat);
     }
+  function proveIt() {
+    alert('Challenge sent!');
+  }
 </script>

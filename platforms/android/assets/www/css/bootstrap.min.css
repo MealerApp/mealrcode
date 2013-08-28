@@ -259,3 +259,6 @@ td.btn {
 	margin-left: 1.8em;
 	margin-top: 0.5em;
 }
+.challenge_content {
+	display: inline;
+}

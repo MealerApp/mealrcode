@@ -3,7 +3,8 @@
 
 <script type="text/javascript">
    $(document).ready(function() {  
-  
+
+  currentUser = Parse.User.current();
     currentUser.fetch({
       success: function(result){
         var userBadges = currentUser.get('badges');
@@ -45,7 +46,7 @@
       
       }
     })    
-  })
+  
 
   function insertBadge(badge){
     var image = badge.image._url;
@@ -71,7 +72,7 @@
     }, 10000);
   //displays msg in 10 seconds
   }
-
+})
   // $('.badge_row').append("<img src='" + badge.image._url + "' class='give_a_class'><br/><span class='badge-name'>" + badge.name + "</span>");
 
 

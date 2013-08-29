@@ -13,7 +13,7 @@
             success: function(result) {
               insertBadge(result.attributes);
               // submitBadgePost(result.attributes);
-              console.log(submitBadgePost);
+              //console.log(submitBadgePost);
               // //CHANGES
               // $('.badge_row').append("<img src='" + image + "' class='badgeImg'><br/><span class='badge-name'>" + badge.name + "</span>");
               //     $.get("post_partials/badge_post.html", function (data) {
@@ -62,8 +62,15 @@
       </div>';
     
     $('#badgeOutlet').append(html);
-  }
 
+  setTimeout( function pushNot() { 
+        var r = confirm("Tawsif sent you a challenge! Click OK to view it");
+      if (r===true) {
+        $('#mainOutlet').load('challenges.html');
+      }
+    }, 10000);
+  //displays msg in 10 seconds
+  }
 
   // $('.badge_row').append("<img src='" + badge.image._url + "' class='give_a_class'><br/><span class='badge-name'>" + badge.name + "</span>");
 

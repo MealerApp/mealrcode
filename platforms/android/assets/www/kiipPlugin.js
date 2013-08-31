@@ -2,7 +2,7 @@ var Kiip = function() {
 };
 
 Kiip.prototype.init = function(api_key, api_secret, successCallback, failureCallback) {
-	return cordova.exec(	successCallback,
+	return Cordova.exec(	successCallback,
 							failureCallback,
 							'KiipPlugin',
 							'initializeKiip',

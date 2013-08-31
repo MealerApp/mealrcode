@@ -32,7 +32,7 @@
     <script src="http://code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.js"></script>
-
+    <script src="kiipPlugin.js"></script>
     
     <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
     <!--<script src="js/respond.js"></script> -->
@@ -246,7 +246,7 @@ function onResume(){
     }
     
     function onDeviceReady() {
-            kiip.init('fdad86017da03535b86f7d622b0d27db', '4d0ec4da394aab8d697ad23c54107b0f', kiipSuccessCallback, kiipFailureCallback);
+
       eitherReady();
     }
     
@@ -260,6 +260,7 @@ function onResume(){
       var PARSE_JS = "KPzkymEo5O2hnxafmb51JjZkF7HamJLxDdMQnupq";
       Parse.initialize(PARSE_APP, PARSE_JS);
       
+      kiip.init('fdad86017da03535b86f7d622b0d27db', '4d0ec4da394aab8d697ad23c54107b0f', kiipSuccessCallback, kiipFailureCallback);
 
       
       currentUser = Parse.User.current()

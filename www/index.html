@@ -63,7 +63,8 @@
     function onSuccess(imageData) {
       var image = document.getElementById('myImage');
       image.src = "data:image/jpeg;base64," + imageData;
-      image.show();
+      // image.show();
+      // $('#myImage').show();
       imagedata = imageData;
     }
       
@@ -89,9 +90,9 @@
           <ul class="nav navbar-nav">
             <li class="profile"><a href="#" onclick="navSelect('profile.html');">Profile</a></li>
             <li class="tracker"><a href="#" onclick="navSelect('the_tracker.html');">Trackers</a></li>
-            <li class="badges"><a href="#" onclick="navSelect('badges.html');">Badges</a></li><!-- 
-            <li class="options"><a href="#" onclick="$('#mainOutlet').load('options.html');">Options</a></li>
- -->            <li>
+            <li class="badges"><a href="#" onclick="navSelect('badges.html');">Badges</a></li>
+            <li class="options"><a href="#" onclick="navSelect('challenges.html');">Prove It</a></li>
+            <li>
               <p class="navbar-text" id='signedIn'></p>
               <button onclick="logOut();" type="button" class="btn btn-default navbar-btn">Log Out</button></li>
             </ul>
@@ -153,10 +154,13 @@
             $.get("post_partials/text_post.html").done( function (data) {
               $('#mainOutlet').append(data);
               $('.status_text').eq(index).text(item.attributes.text);
-              $('.timestamp').eq(index).text(item.createdAt);
+              //$('.timestamp').eq(index).text(item.createdAt);
               //$('.timestamp').eq(index).text(item.createdAt);
               console.log(item.attributes.user.get('username'));
-              $('#statusName').eq(index).html(item.attributes.user.getUsername());
+
+
+                //COMMENTED OUT GET USERNAME FOR DEMO
+              //$('#statusName').eq(index).html(item.attributes.user.getUsername());
               
             })
          }
@@ -177,10 +181,10 @@
               $.get("post_partials/badge_post.html").done(  function (data) {
                 $('#mainOutlet').append(data);
                 $('.status_text').eq(index).text(item.attributes.text);
-              $('#statusName').eq(index).html(item.attributes.user.getUsername());
 
+              $('#statusName').eq(index).html(item.attributes.user.getUsername());
               //ORIGINAL  
-              // $('.badgeImg').eq(index)[0].setAttribute('src', item.attributes.picture._url);
+              $('.badgeImg').eq(index)[0].setAttribute('src', item.attributes.picture._url);
 
 
               //var image = src('img/first_badge.png');
@@ -277,11 +281,11 @@ function onResume(){
     }
     
     function kiipSuccessCallback(){
-      console.log('kiip success');
+      alert('kiip success');
     }
     
     function kiipFailureCallback(){
-      console.log('kiip failure');
+      alert('kiip failure');
     }
     
     

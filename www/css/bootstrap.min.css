@@ -150,13 +150,11 @@ p {
 }
 #checkbox p {
 	font-size: 8px;
-}/*
+}
 #myImage {
 	width:8.75em; 
-	height:8.75em; 
-	display: none;
-	image-orientation: -90deg; 
-}*/
+	height:8.75em;  
+}
 .row {
 	width: 100%;
 }
@@ -258,4 +256,7 @@ td.top_row {
 td.btn {
 	margin-left: 1.8em;
 	margin-top: 0.5em;
+}
+.challenge_content {
+	display: inline;
 }

@@ -3,9 +3,9 @@
           <div class='row badge_row'>
               <img class="default_pic" src="img/Twasif.png"><a href="#" id="statusName" class="span2">Tawsif Islam</a>
               <p class="status_text"></p>
-              <img class="badgeImg" id="badgeImg" src="" style="width: 7em; height:7em;">
+              <img class="badgeImg" id="badgeImg" src="" style="width: 5em; height:5em;">
               <div class="like"><a href="#" onclick="addPat();" class="btn footer"><span id="like"></span> Pats</a>
-              <a href="#" class="btn footer">Challenge</a></div>
+              <a href="#" onclick="proveIt();" class="btn footer">Challenge</a></div>
           </div>
       </div>
   </div>
@@ -21,4 +21,8 @@
       currentPat += 1;
       $('#like').html(currentPat);
     }
+
+  function proveIt() {
+    alert('Challenge sent!');
+  }
 </script>
